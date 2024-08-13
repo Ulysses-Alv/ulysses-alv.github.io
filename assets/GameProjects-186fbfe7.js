@@ -1,15 +1,11 @@
-import{P as e,a as i}from"./ProjectData-8601123b.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-77f556b5.js";const h=[new e("project-1","Grand Theft Laugh","img/projects/GrandTheftLaugh.gif",`
+import{P as e,a as i}from"./ProjectData-e7e3d4f7.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-409266ce.js";const h=[new e("project-1","Grand Theft Laugh","img/projects/GrandTheftLaugh.gif",`
     <div class="paragraph">
      <strong>Grand Theft Laugh</strong> Global Game Jam 2024.
     </div>
     <div class="paragraph center">
         <img src="img/projects/GrandTheftLaugh.gif">
     </div>
-    <div class="paragraph center">
-        <a href="https://play.google.com/store/apps/details?id=some.playstore.thing" target="_blank">
-            <img src="img/projects/play-store-logo.png" alt="Play Store badge" />
-        </a>
-    </div>
+    
     <div class="paragraph">
         <ul>
         <li>Theme: Make me Laugh.</li>
@@ -18,7 +14,11 @@ import{P as e,a as i}from"./ProjectData-8601123b.js";import{e as r,_ as o,h as n
         <li>Platform: Windows.</li>
         <li>Other: GitHub, Git, Trello.</li></ul>
     </div>
-
+<div class="paragraph">
+        <div class="notice">
+        Avaiable on <a href="https://vlyx.itch.io/grand-theft-laugh" target="_blank">itch.io</a>
+        </div>
+    </div>
     <div class="paragraph center">
     <img class="phone-screenshot" src="https://ggjv4.s3.us-west-1.amazonaws.com/files/styles/flexslider_full/s3/games/2024/716762/screenshot/image.png?VersionId=85f.2y4vjdylbQqP.ej6LRvIkf3E_2De&itok=TFKakB3N"
                                 alt="img 1">
@@ -59,7 +59,7 @@ import{P as e,a as i}from"./ProjectData-8601123b.js";import{e as r,_ as o,h as n
     </div>
     `,"#383838",!0),new e("project-4","Roomaker","https://img.itch.zone/aW1nLzEzNTUxNjYzLnBuZw==/315x250%23c/AqpKHb.png",`
     <div class="paragraph">
-    <strong>Grand Theft Laugh</strong> Global Game Jam 2024.
+    <strong>Grand Theft Laugh</strong>
     Room Makers is a chill 2D puzzle game with a few friends for the GBJam 11.
     In this gameboy themed game, you're a lucky guy who constantly receives new furniture but struggle to quickly arrange it all!
     </div>
@@ -115,13 +115,10 @@ import{P as e,a as i}from"./ProjectData-8601123b.js";import{e as r,_ as o,h as n
     
         <div class="paragraph">
             <div class="notice">
-            Windows build available on <a href="https://some.where/nice" target="_blank">itch.io</a>.
-            Source code available on <a href="https://github.com/yourself" target="_blank">GitHub</a>.
+            WebGL build available on <a href="https://vlyx.itch.io/movemove-remake" target="_blank">itch.io</a>.
+            Source code available on <a href="https://github.com/Ulysses-Alv/Move-Move-Remake" target="_blank">GitHub</a>.
             </div>
         </div>
     
         <div class="paragraph center">
-            <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
-            <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
-            <img class="pc-screenshot" src="https://fakeimg.pl/534x300/" alt="Cloud Drew Land Screenshot" />
-        </div>`,"#e48246",!1,!1)],m=r({name:"GameProjects",components:{ProjectsList:i},data:function(){return{projects:h}}}),d=a("h1",null,"Game Projects",-1),u=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),v=a("div",{style:{"margin-top":"20px"}},[g(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,w,y,j,k){const t=n("ProjectsList");return p(),l("div",null,[d,u,c(t,{projects:s.projects},null,8,["projects"]),v])}const _=o(m,[["render",f]]);export{_ as default};
+        </div>`,"#e48246",!1,!1)],d=r({name:"GameProjects",components:{ProjectsList:i},data:function(){return{projects:h}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[g(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,y,w,j,k){const t=n("ProjectsList");return p(),l("div",null,[m,v,c(t,{projects:s.projects},null,8,["projects"]),u])}const _=o(d,[["render",f]]);export{_ as default};
