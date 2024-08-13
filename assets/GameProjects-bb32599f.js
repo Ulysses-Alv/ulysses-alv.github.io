@@ -1,4 +1,4 @@
-import{P as e,a as i}from"./ProjectData-153f5f3f.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-c2cf42d0.js";const h=[new e("project-1","Grand Theft Laugh","img/projects/GrandTheftLaugh.gif",`
+import{P as e,a as i}from"./ProjectData-1ec12525.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-ba4c31fd.js";const h=[new e("project-1","Grand Theft Laugh","img/projects/GrandTheftLaugh.gif",`
     <div class="paragraph">
      <strong>Grand Theft Laugh</strong> Global Game Jam 2024.
     </div>
