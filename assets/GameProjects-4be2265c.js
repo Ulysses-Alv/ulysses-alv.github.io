@@ -1,9 +1,9 @@
-import{P as e,a as i}from"./ProjectData-52a23a45.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-c3068b55.js";const d=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as e,a as i}from"./ProjectData-2da8ca33.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-23e41875.js";const d=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
          <div class="paragraph center">
-            <img src=""
+            <img src="img/projects/Astropark.jpg"
         </div>
         <div class="paragraph">
            Prepare to dive into new worlds as you explore an asteroid belt on your journey to the moon and uncover the magic of black holes in our observatory.
@@ -90,7 +90,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
     `,"#383838",!1),new e("project-4","Roomaker","https://img.itch.zone/aW1nLzEzNTUxNjYzLnBuZw==/315x250%23c/AqpKHb.png",`
     <div class="paragraph">
     <strong>Room Makersh</strong>
-     is a chill 2D puzzle game with a few friends for the GBJam 11.
+     is a chill 2D puzzle game for the GBJam 11.
     In this gameboy themed game, you're a lucky guy who constantly receives new furniture but struggle to quickly arrange it all!
     </div>
     <div class="paragraph center">
