@@ -1,9 +1,9 @@
-import{P as e,a as o}from"./ProjectData-1528c37a.js";import{e as i,_ as n,h as r,c,i as l,a,d as g,o as p}from"./index-196191df.js";const d=[new e("project-6","AstroPark","https://scontent.oculuscdn.com/v/t64.5771-25/38982460_197822373329358_4284473440564561679_n.jpg?stp=dst-jpg_q92_s750x750&_nc_cat=105&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=n0vlB9tQ31AQ7kNvgEOmIyP&_nc_ht=scontent.oculuscdn.com&oh=00_AYDb1tWLfzb3jztzn-htd3ryPb36jdT1n6GbjXmolMXz3g&oe=66C2C2E8",`
+import{P as e,a as i}from"./ProjectData-52a23a45.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-c3068b55.js";const d=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
          <div class="paragraph center">
-            <img src="https://scontent.oculuscdn.com/v/t64.5771-25/38982460_197822373329358_4284473440564561679_n.jpg?stp=dst-jpg_q92_s750x750&_nc_cat=105&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=n0vlB9tQ31AQ7kNvgEOmIyP&_nc_ht=scontent.oculuscdn.com&oh=00_AYDb1tWLfzb3jztzn-htd3ryPb36jdT1n6GbjXmolMXz3g&oe=66C2C2E8"
+            <img src=""
         </div>
         <div class="paragraph">
            Prepare to dive into new worlds as you explore an asteroid belt on your journey to the moon and uncover the magic of black holes in our observatory.
@@ -24,9 +24,9 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
             </div>
         </div>
     <div class="paragraph center">
-        <img class="pc-screenshot" src="https://scontent.oculuscdn.com/v/t64.5771-25/38982518_533017902341923_5263207808924262857_n.jpg?stp=dst-jpg_q92_s1440x1440&_nc_cat=104&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=SgZMS5qaaRQQ7kNvgGysXCI&_nc_ht=scontent.oculuscdn.com&oh=00_AYD7WcnKwmlwb3VJ91vIe4yBevLdldKookLk0yVSAKYHxw&oe=66C2D2E6" alt="Eugeneable Screenshot" />
-        <img class="pc-screenshot" src="https://scontent.oculuscdn.com/v/t64.5771-25/57574717_1573577066508114_3579169709921699253_n.jpg?stp=dst-jpg_q92_s1440x1440&_nc_cat=110&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=WLYiHlNwFg8Q7kNvgFKWqI7&_nc_ht=scontent.oculuscdn.com&oh=00_AYAaCUkr4_DPcUIvJSVayDAyL7DqcGpDwOg6gkwtt9Cp6g&oe=66C2D5EC" alt="Eugeneable Screenshot" />
-        <img class="pc-screenshot" src="https://scontent.oculuscdn.com/v/t64.5771-25/39031580_1998960427119753_5777633933203765630_n.jpg?stp=dst-jpg_q92_s1440x1440&_nc_cat=109&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=8uEG4On91fgQ7kNvgHVZnU1&_nc_ht=scontent.oculuscdn.com&oh=00_AYBssQF6vn_xWnGy4XRqpwJFqqeaoD_9_PNJqjh_iHAOgg&oe=66C2C32B" alt="Eugeneable Screenshot" />
+        <img class="pc-screenshot" src="img/projects/38982518_533017902341923_5263207808924262857_n.jpg" alt="Astro" />
+        <img class="pc-screenshot" src="img/projects/39003252_805917724661203_7829550643353870462_n.jpg" alt="Newton" />
+        <img class="pc-screenshot" src="img/projects/75488378_800660725129207_5894272252427719846_n.jpg" alt="SpaceShip" />
     </div>
         </div>`,"#3464eb",!0,!0),new e("project-1","Grand Theft Laugh","img/projects/GrandTheftLaugh.gif",`
     <div class="paragraph">
@@ -151,4 +151,4 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
     
         <div class="paragraph center">
-        </div>`,"#e48246",!1,!1)],h=i({name:"GameProjects",components:{ProjectsList:o},data:function(){return{projects:d}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[g(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function _(s,f,b,j,y,w){const t=r("ProjectsList");return p(),c("div",null,[m,v,l(t,{projects:s.projects},null,8,["projects"]),u])}const P=n(h,[["render",_]]);export{P as default};
+        </div>`,"#e48246",!1,!1)],h=r({name:"GameProjects",components:{ProjectsList:i},data:function(){return{projects:d}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[g(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,k){const t=n("ProjectsList");return p(),l("div",null,[m,v,c(t,{projects:s.projects},null,8,["projects"]),u])}const M=o(h,[["render",f]]);export{M as default};
