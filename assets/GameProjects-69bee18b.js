@@ -1,9 +1,9 @@
-import{P as e,a as i}from"./ProjectData-2da8ca33.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as g,o as p}from"./index-23e41875.js";const d=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as e,a as i}from"./ProjectData-36dfe62a.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as p,o as g}from"./index-4f7b1e73.js";const h=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
          <div class="paragraph center">
-            <img src="img/projects/Astropark.jpg"
+            <img class="pc-screenshot" src="img/projects/Astropark.jpg" alt="Astro" />
         </div>
         <div class="paragraph">
            Prepare to dive into new worlds as you explore an asteroid belt on your journey to the moon and uncover the magic of black holes in our observatory.
@@ -111,7 +111,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
 
     <div class="paragraph">
         <div class="notice">
-        Windows build available on <a href="https://justneki.itch.io/room-makers" target="_blank">itch.io</a>.
+        WebGL version available on <a href="https://justneki.com/RoomMakersWeb/" target="_blank">itch.io</a>.
         Android version coming soon!
         </div>
     </div>
@@ -151,4 +151,4 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
     
         <div class="paragraph center">
-        </div>`,"#e48246",!1,!1)],h=r({name:"GameProjects",components:{ProjectsList:i},data:function(){return{projects:d}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[g(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,k){const t=n("ProjectsList");return p(),l("div",null,[m,v,c(t,{projects:s.projects},null,8,["projects"]),u])}const M=o(h,[["render",f]]);export{M as default};
+        </div>`,"#e48246",!1,!1)],d=r({name:"GameProjects",components:{ProjectsList:i},data:function(){return{projects:h}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[p(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,k){const t=n("ProjectsList");return g(),l("div",null,[m,v,c(t,{projects:s.projects},null,8,["projects"]),u])}const M=o(d,[["render",f]]);export{M as default};
