@@ -1,4 +1,4 @@
-import{P as e,a as i}from"./ProjectData-36dfe62a.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as p,o as g}from"./index-4f7b1e73.js";const h=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as e,a as i}from"./ProjectData-7d4ffb43.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as p,o as g}from"./index-6812b319.js";const h=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
