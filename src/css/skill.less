@@ -1,0 +1,140 @@
+/*----------- Credits: https://www.youtube.com/watch?v=PXEWjolPP0I ----------*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.skills {
+    padding-top: 20px;
+}
+
+.skills-header {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    position: relative;
+}
+.skills-header-secundario {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    position: relative;
+
+}
+.skills-header-secundario::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 100px;
+    background-color: rgb(21, 161, 44);
+}
+
+.skills-header:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 100px;
+    background-color: aqua;
+}
+
+.skill-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    flex-wrap: wrap; /* flex-flow no es necesario aquí, utiliza flex-wrap */
+}
+
+
+.skill-icon {
+    width: 60px;
+    
+}
+
+.unity {
+    margin-right: 8px;
+}
+.img {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #fefefe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+.skill-box p{
+    padding: 0.7rem;
+    color: #ddd;
+    cursor: pointer;
+    max-width: 400px; /* El 20px es el espacio entre las columnas */
+    flex-grow: 1;
+    margin: 0px; /* Puedes ajustar esto según tus preferencias */
+}
+
+
+.skill-box:hover>.skill-title:after,
+.skill-box:hover>.skill-title:before {
+    width: 35px;
+}
+
+.skill-box:hover .img{
+    transform: translateY(-10px);
+}
+.skill-box:hover h3{
+    font-size: 22px;
+    transition: .2s;
+}
+
+.skill-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.skill-title h3 {
+    color: #ffffff;
+    margin: 0.5rem;
+}
+
+.skill-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    width: 0px;
+    height: 4px;
+    border-radius: 2px 0 0 2px;
+    background-color: #2ecc71;
+    transition: .5s;
+}
+
+.skill-title:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0px;
+    height: 4px;
+    border-radius: 0 2px 2px 0;
+    background-color: #2ecc71;
+    transition: .5s;
+
+}
