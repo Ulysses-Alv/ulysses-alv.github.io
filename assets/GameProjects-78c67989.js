@@ -1,4 +1,4 @@
-import{P as e,a as i}from"./ProjectData-c17a507d.js";import{e as r,_ as o,h as n,c as l,i as c,a,d as p,o as g}from"./index-1da48c2e.js";const h=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as e,a as t}from"./ProjectData-8d6d09c6.js";import{e as i,_ as o,h as l,c as n,i as c,a,d as p,o as g}from"./index-bd7e3cdd.js";const d=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
@@ -151,4 +151,31 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
     
         <div class="paragraph center">
-        </div>`,"#e48246",!1,!1)],d=r({name:"GameProjects",components:{ProjectsList:i},data:function(){return{projects:h}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[p(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,k){const t=n("ProjectsList");return g(),l("div",null,[m,v,c(t,{projects:s.projects},null,8,["projects"]),u])}const M=o(d,[["render",f]]);export{M as default};
+        </div>`,"#e48246",!1,!1),new e("project-7","Wonderland","img/projects/wonderland.jpg",`
+        <div class="paragraph">
+            <strong>Wonderland</strong> a place where dreams come true.
+        </div>
+         <div class="paragraph center">
+            <img src="img/projects/wonderland2.jpg"
+        </div>
+        <div class="paragraph">
+            Game made in Horizon World.
+            </div>
+        <div class="paragraph">
+            Main features :
+            <ul>
+                <li>Status: Done.</li>
+                <li>Language: TypeScript.</li>
+                <li>Engine: Horizon World.</li>
+                <li>Platform: Horizon World (VR/PC/Mobile).</li>
+            </ul>
+        </div>
+    
+        <div class="paragraph">
+            <div class="notice">
+            Available on <a href="https://horizon.meta.com/world/10162530732029711/?locale=en_US" target="_blank">Horizon World</a>.
+            </div>
+        </div>
+    
+        <div class="paragraph center">
+        </div>`,"#461cd4",!1,!1)],h=i({name:"GameProjects",components:{ProjectsList:t},data:function(){return{projects:d}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[p(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,k){const r=l("ProjectsList");return g(),n("div",null,[m,v,c(r,{projects:s.projects},null,8,["projects"]),u])}const P=o(h,[["render",f]]);export{P as default};
