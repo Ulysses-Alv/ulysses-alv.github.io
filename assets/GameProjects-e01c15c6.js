@@ -1,4 +1,4 @@
-import{P as e,a as t}from"./ProjectData-8d6d09c6.js";import{e as i,_ as o,h as l,c as n,i as c,a,d as p,o as g}from"./index-bd7e3cdd.js";const d=[new e("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as a,a as t}from"./ProjectData-c6d5fa29.js";import{e as i,_ as o,h as l,c as n,i as c,a as e,d as p,o as g}from"./index-b8cca0d6.js";const d=[new a("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
@@ -28,7 +28,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         <img class="pc-screenshot" src="img/projects/39003252_805917724661203_7829550643353870462_n.jpg" alt="Newton" />
         <img class="pc-screenshot" src="img/projects/75488378_800660725129207_5894272252427719846_n.jpg" alt="SpaceShip" />
     </div>
-        </div>`,"#3464eb",!0,!0),new e("project-1","Grand Theft Laugh","img/projects/GrandTheftLaugh.gif",`
+        </div>`,"#3464eb",!0,!0),new a("project-1","Grand Theft Laugh","img/projects/GrandTheftLaugh.gif",`
     <div class="paragraph">
      <strong>Grand Theft Laugh</strong> Global Game Jam 2024.
     </div>
@@ -56,7 +56,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
                                 alt="img 2">
        
     </div>
-    `,"#23bd69",!1,!1),new e("project-3","Farmoxel","img/projects/farmoxel.PNG",`
+    `,"#23bd69",!1,!1),new a("project-3","Farmoxel","img/projects/farmoxel.PNG",`
     <div class="paragraph">
         <strong>Farmoxel</strong> is a thing of beauty that I am so proud of. I could write about it for hours.
        
@@ -87,10 +87,10 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         <img class="pc-screenshot" src="https://blogger.googleusercontent.com/img/a/AVvXsEhzNLWXAdOqq-Im0Xz26dhuZNBCv5hIaHy3iZAyUQTnToYMuU-nWLHeao9yyyDCJvBfjiAxU1qFko39w67M4ULGrwuOO9xHp6EBZqfYYhDjGmaOZNaCnrPf89TKIW2CvE9DG8Zby6J1EcnUhjUavBou8pFLv_3x0enIfjRD89STTunK83qHEEDqqz0nxAPh=w945-h600-p-k-no-nu" alt="Strawberries" />
         <img class="pc-screenshot" src="https://blogger.googleusercontent.com/img/a/AVvXsEim0sV6_GUxPRfY1JpkU-XKmZRVLZ5PZlpaAXSLYOacAHGP3icTyFYIyDIq84s-5tYPHZNY_e39CeH1rsM3dkPWxSpWsn34mnpZMT3acx6FS38MsUOMXJbiSbpoCh_b9OnEwrEg7Yl6btv6FgitADo0zD-XEYWmcQ4dJ8RvksS9RQgnOaqUS5X05PoP0v-e=w640-h360" alt="Drawing Overload Screenshot" />
     </div>
-    `,"#383838",!1),new e("project-4","Roomaker","https://img.itch.zone/aW1nLzEzNTUxNjYzLnBuZw==/315x250%23c/AqpKHb.png",`
+    `,"#383838",!1),new a("project-4","Roomaker","https://img.itch.zone/aW1nLzEzNTUxNjYzLnBuZw==/315x250%23c/AqpKHb.png",`
     <div class="paragraph">
     <strong>Room Makersh</strong>
-     is a chill 2D puzzle game for the GBJam 11.
+     is a chill 2D puzzle game for Android.
     In this gameboy themed game, you're a lucky guy who constantly receives new furniture but struggle to quickly arrange it all!
     </div>
     <div class="paragraph center">
@@ -111,8 +111,8 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
 
     <div class="paragraph">
         <div class="notice">
-        WebGL version available on <a href="https://justneki.com/RoomMakersWeb/" target="_blank">itch.io</a>.
-        Android version coming soon!
+        Android version available on <a href="https://play.google.com/store/apps/details?id=com.FaRTeam.RoomMakers&pcampaignid=web_share" target="_blank">Google Play Store</a>.
+        Also <a href="https://farteam.digital/RoomMakersDemo/" target="_blank">Web</a> version!
         </div>
     </div>
 
@@ -121,7 +121,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         <img class="pc-screenshot" src="https://img.itch.zone/aW1hZ2UvMjI3NTEwNy8xMzUxMjY0MC5wbmc=/347x500/07%2F80q.png" alt="Eugeneable Screenshot" />
         <img class="pc-screenshot" src="https://img.itch.zone/aW1hZ2UvMjI3NTEwNy8xMzUxMjc3Ni5wbmc=/347x500/PvCBd8.png" alt="Eugeneable Screenshot" />
     </div>
-    `,"#e80fb7"),new e("project-5","Move & Move","https://img.itch.zone/aW1nLzE0NTk4NTIxLnBuZw==/315x250%23c/Y9OzJk.png",`
+    `,"#e80fb7"),new a("project-5","Move & Move","https://img.itch.zone/aW1nLzE0NTk4NTIxLnBuZw==/315x250%23c/Y9OzJk.png",`
         <div class="paragraph">
             <strong>Move & Move Remake</strong> Remake of my first project following SOLID.
         </div>
@@ -151,7 +151,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
     
         <div class="paragraph center">
-        </div>`,"#e48246",!1,!1),new e("project-7","Wonderland","img/projects/wonderland.jpg",`
+        </div>`,"#e48246",!1,!1),new a("project-7","Wonderland","img/projects/wonderland.jpg",`
         <div class="paragraph">
             <strong>Wonderland</strong> a place where dreams come true.
         </div>
@@ -178,4 +178,4 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
     
         <div class="paragraph center">
-        </div>`,"#461cd4",!1,!1)],h=i({name:"GameProjects",components:{ProjectsList:t},data:function(){return{projects:d}}}),m=a("h1",null,"Game Projects",-1),v=a("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=a("div",{style:{"margin-top":"20px"}},[p(" There is more to see on "),a("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,k){const r=l("ProjectsList");return g(),n("div",null,[m,v,c(r,{projects:s.projects},null,8,["projects"]),u])}const P=o(h,[["render",f]]);export{P as default};
+        </div>`,"#461cd4",!1,!1)],h=i({name:"GameProjects",components:{ProjectsList:t},data:function(){return{projects:d}}}),m=e("h1",null,"Game Projects",-1),v=e("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=e("div",{style:{"margin-top":"20px"}},[p(" There is more to see on "),e("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,_){const r=l("ProjectsList");return g(),n("div",null,[m,v,c(r,{projects:s.projects},null,8,["projects"]),u])}const P=o(h,[["render",f]]);export{P as default};
