@@ -1,4 +1,4 @@
-import{P as a,a as t}from"./ProjectData-c6d5fa29.js";import{e as i,_ as o,h as l,c as n,i as c,a as e,d as p,o as g}from"./index-b8cca0d6.js";const d=[new a("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as a,a as t}from"./ProjectData-Cw0xU_3o.js";import{d as o,_ as l,f as n,o as c,a as p,b as s,g,h as d}from"./index-BKLD2yP9.js";const m=[new a("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
@@ -90,7 +90,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
     `,"#383838",!1),new a("project-4","Roomaker","https://img.itch.zone/aW1nLzEzNTUxNjYzLnBuZw==/315x250%23c/AqpKHb.png",`
     <div class="paragraph">
     <strong>Room Makersh</strong>
-     is a chill 2D puzzle game for Android.
+     is a chill 2D puzzle game for the GBJam 11.
     In this gameboy themed game, you're a lucky guy who constantly receives new furniture but struggle to quickly arrange it all!
     </div>
     <div class="paragraph center">
@@ -111,8 +111,8 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
 
     <div class="paragraph">
         <div class="notice">
-        Android version available on <a href="https://play.google.com/store/apps/details?id=com.FaRTeam.RoomMakers&pcampaignid=web_share" target="_blank">Google Play Store</a>.
-        Also <a href="https://farteam.digital/RoomMakersDemo/" target="_blank">Web</a> version!
+        WebGL version available on <a href="https://justneki.com/RoomMakersWeb/" target="_blank">itch.io</a>.
+        Android version coming soon!
         </div>
     </div>
 
@@ -178,4 +178,4 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
     
         <div class="paragraph center">
-        </div>`,"#461cd4",!1,!1)],h=i({name:"GameProjects",components:{ProjectsList:t},data:function(){return{projects:d}}}),m=e("h1",null,"Game Projects",-1),v=e("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1),u=e("div",{style:{"margin-top":"20px"}},[p(" There is more to see on "),e("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1);function f(s,b,j,y,w,_){const r=l("ProjectsList");return g(),n("div",null,[m,v,c(r,{projects:s.projects},null,8,["projects"]),u])}const P=o(h,[["render",f]]);export{P as default};
+        </div>`,"#461cd4",!1,!1)],h=o({name:"GameProjects",components:{ProjectsList:t},data:function(){return{projects:m}}});function v(r,e,u,f,b,j){const i=n("ProjectsList");return c(),p("div",null,[e[0]||(e[0]=s("h1",null,"Game Projects",-1)),e[1]||(e[1]=s("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1)),g(i,{projects:r.projects},null,8,["projects"]),e[2]||(e[2]=s("div",{style:{"margin-top":"20px"}},[d(" There is more to see on "),s("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1))])}const k=l(h,[["render",v]]);export{k as default};

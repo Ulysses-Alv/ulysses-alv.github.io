@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <script>
+    // GitHub Pages SPA redirect - preserves clean URLs
+    (function() {
+      var path = window.location.pathname.replace(/\/$/, '') || '/';
+      var query = window.location.search || '';
+      var hash = window.location.hash || '';
+      var target = '/' + 'index.html' + (path !== '/' ? '?/' + path : '') + query + hash;
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
