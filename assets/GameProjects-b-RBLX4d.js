@@ -1,4 +1,4 @@
-import{P as a,a as r}from"./ProjectData-BuNeIlNV.js";import{d as o,_ as l,f as n,o as c,a as p,b as s,g,h as d}from"./index-Bif8Ze7e.js";const m=[new a("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as a,a as r}from"./ProjectData-C9ifN7Bc.js";import{d as o,_ as l,f as n,o as c,a as p,b as s,g,h as d}from"./index-BepUW2aJ.js";const m=[new a("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
@@ -190,9 +190,9 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
         <div class="paragraph">
             <ul>
-                <li>Engine: Godot.</li>
-                <li>Language: GDScript.</li>
-                <li>Platform: Windows.</li>
+                <li>Engine: Unity Engine.</li>
+                <li>Language: C#.</li>
+                <li>Platform: Windows/VR.</li>
                 <li>Inputs: WASD move, Mouse camera, E interact, SPACE reel flashlight.</li>
             </ul>
         </div>
