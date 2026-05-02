@@ -1,4 +1,4 @@
-import{P as a,a as t}from"./ProjectData-Cw0xU_3o.js";import{d as o,_ as l,f as n,o as c,a as p,b as s,g,h as d}from"./index-BKLD2yP9.js";const m=[new a("project-6","AstroPark","img/projects/Astropark.jpg",`
+import{P as a,a as r}from"./ProjectData-BuNeIlNV.js";import{d as o,_ as l,f as n,o as c,a as p,b as s,g,h as d}from"./index-Bif8Ze7e.js";const m=[new a("project-6","AstroPark","img/projects/Astropark.jpg",`
         <div class="paragraph">
             <strong>AstroPark</strong> Astro mini games!
         </div>
@@ -156,7 +156,7 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
             <strong>Wonderland</strong> a place where dreams come true.
         </div>
          <div class="paragraph center">
-            <img src="img/projects/wonderland2.jpg"
+             <img src="img/projects/wonderland2.jpg"
         </div>
         <div class="paragraph">
             Game made in Horizon World.
@@ -178,4 +178,33 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
         </div>
     
         <div class="paragraph center">
-        </div>`,"#461cd4",!1,!1)],h=o({name:"GameProjects",components:{ProjectsList:t},data:function(){return{projects:m}}});function v(r,e,u,f,b,j){const i=n("ProjectsList");return c(),p("div",null,[e[0]||(e[0]=s("h1",null,"Game Projects",-1)),e[1]||(e[1]=s("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1)),g(i,{projects:r.projects},null,8,["projects"]),e[2]||(e[2]=s("div",{style:{"margin-top":"20px"}},[d(" There is more to see on "),s("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1))])}const k=l(h,[["render",v]]);export{k as default};
+        </div>`,"#461cd4",!1,!1),new a("project-8","The Imitation","imitation/imagenPrincipal.png",`
+        <div class="paragraph">
+            <strong>The Imitation</strong> First-person survival horror.
+        </div>
+        <div class="paragraph">
+            Night guard in a museum. Creatures imitate exhibits. Hand-cranked flashlight as defense.
+        </div>
+        <div class="paragraph center">
+            <iframe src="https://www.youtube.com/embed/LE3EplcP6UE" class="youtube" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="paragraph">
+            <ul>
+                <li>Engine: Godot.</li>
+                <li>Language: GDScript.</li>
+                <li>Platform: Windows.</li>
+                <li>Inputs: WASD move, Mouse camera, E interact, SPACE reel flashlight.</li>
+            </ul>
+        </div>
+        <div class="paragraph">
+            <div class="notice">
+            Available on <a href="https://juanifa.itch.io/the-imitation" target="_blank">itch.io</a>.
+            GGJ entry on <a href="https://globalgamejam.org/games/2026/imitation-5" target="_blank">Global Game Jam</a>.
+            </div>
+        </div>
+        <div class="paragraph center">
+            <img class="pc-screenshot" src="imitation/VU53NH.png" alt="The Imitation screenshot 1" />
+            <img class="pc-screenshot" src="imitation/rqhQu4.png" alt="The Imitation screenshot 2" />
+            <img class="pc-screenshot" src="imitation/oDsLAx.png" alt="The Imitation screenshot 3" />
+        </div>
+        `,"#4C0D02")],h=o({name:"GameProjects",components:{ProjectsList:r},data:function(){return{projects:m}}});function v(i,e,u,f,b,j){const t=n("ProjectsList");return c(),p("div",null,[e[0]||(e[0]=s("h1",null,"Game Projects",-1)),e[1]||(e[1]=s("div",{style:{"margin-bottom":"30px"}}," Most notable projects. ",-1)),g(t,{projects:i.projects},null,8,["projects"]),e[2]||(e[2]=s("div",{style:{"margin-top":"20px"}},[d(" There is more to see on "),s("a",{target:"_blank",href:"https://github.com/Ulysses-Alv?tab=repositories"},"Github Repo")],-1))])}const k=l(h,[["render",v]]);export{k as default};
