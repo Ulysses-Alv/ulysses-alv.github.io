@@ -10,7 +10,7 @@ const E404View = () => import('../views/404.vue')
 
 export function createRouter(){
   return _createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
       {
         path: '/',

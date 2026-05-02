@@ -8,12 +8,15 @@ export default ({ mode }) => {
     ...process.env,
     ...loadEnv(mode, process.cwd())
   };
+
+  const url = new URL(process.env.VITE_APP_PRODUCTION_URL || 'https://localhost/');
+  const base = url.pathname.replace(/\/$/, '') || '/';
+
   return defineConfig({
     plugins: [vue()],
-   
+    base: base,
     resolve: {
       alias: [
-        // thanks to https://stackoverflow.com/a/67676242/22296059 :)
         { find: "@", replacement: fileURLToPath(new URL('./src', import.meta.url)) }
       ]
     },
@@ -27,4 +30,4 @@ export default ({ mode }) => {
       }
     }
   });
-} 
+}
