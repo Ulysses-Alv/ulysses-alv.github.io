@@ -160,12 +160,12 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
     
         <div class="paragraph center">
         </div>`, "#e48246", false, false),
-    new ProjectData("project-7", "Wonderland", "img/projects/wonderland.jpg", `
+new ProjectData("project-7", "Wonderland", "img/projects/wonderland.jpg", `
         <div class="paragraph">
             <strong>Wonderland</strong> a place where dreams come true.
         </div>
          <div class="paragraph center">
-            <img src="img/projects/wonderland2.jpg"
+             <img src="img/projects/wonderland2.jpg"
         </div>
         <div class="paragraph">
             Game made in Horizon World.
@@ -188,4 +188,34 @@ Strap on your spacesuit once more and blast off to AstroPark! Your destination f
     
         <div class="paragraph center">
         </div>`, "#461cd4", false, false),
+    new ProjectData("project-8", "The Imitation", "imitation/imagenPrincipal.png", `
+        <div class="paragraph">
+            <strong>The Imitation</strong> First-person survival horror.
+        </div>
+        <div class="paragraph">
+            Night guard in a museum. Creatures imitate exhibits. Hand-cranked flashlight as defense.
+        </div>
+        <div class="paragraph center">
+            <iframe src="https://www.youtube.com/embed/LE3EplcP6UE" class="youtube" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="paragraph">
+            <ul>
+                <li>Engine: Godot.</li>
+                <li>Language: GDScript.</li>
+                <li>Platform: Windows.</li>
+                <li>Inputs: WASD move, Mouse camera, E interact, SPACE reel flashlight.</li>
+            </ul>
+        </div>
+        <div class="paragraph">
+            <div class="notice">
+            Available on <a href="https://juanifa.itch.io/the-imitation" target="_blank">itch.io</a>.
+            GGJ entry on <a href="https://globalgamejam.org/games/2026/imitation-5" target="_blank">Global Game Jam</a>.
+            </div>
+        </div>
+        <div class="paragraph center">
+            <img class="pc-screenshot" src="imitation/VU53NH.png" alt="The Imitation screenshot 1" />
+            <img class="pc-screenshot" src="imitation/rqhQu4.png" alt="The Imitation screenshot 2" />
+            <img class="pc-screenshot" src="imitation/oDsLAx.png" alt="The Imitation screenshot 3" />
+        </div>
+        `, "#4C0D02"),
 ];

@@ -2,14 +2,13 @@
     <h1>Holaa!</h1>
     <div class="about-container">
 
-        <div class="paragraph">
+<div class="paragraph">
             <div>
-                I'm <strong>Ulises Alvarenga</strong>, a <strong>VR and Unity</strong> Game Developer focused on
-                crafting
-                immersive experiences and innovative gameplay.<br><br>
-                <strong>Let’s build something together!</strong>
+                I'm <strong>Ulises Alvarenga</strong>, a <strong>Unity Game Developer</strong> with 4+ years building gameplay systems, real-time multiplayer, and immersive experiences across PC, mobile, and VR/XR platforms.<br><br>
+                I own full feature cycles — from architecture and implementation to profiling and ship — with additional depth in AI-driven systems, VR interaction design, and developer tooling.<br><br>
+                <strong>Let's build something together!</strong>
             </div>
-        </div>
+</div>
 
         <div class="photo">
             <img :src='`img/1694482121256.jpeg`' alt="Here's should be my photo" class="avatar" />

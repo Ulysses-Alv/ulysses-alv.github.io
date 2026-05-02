@@ -2,23 +2,19 @@
   <div>
     <h1>Resume</h1>
 
-    <div class="paragraph">
-      Hi! I'm <strong>Ulises</strong> I'm 20 Years Old. 
-      <br>I'm a Self-Taught Game Developer with experience in Unity but I'm open to other technologies.
-      <br>I started my journey when I was 12 years old with programming block codes. Since then, I've been learning new techs, good practices and of course developing some projects.
-    
-    <div style="margin-top:20px; margin-bottom:20px;">
-      <a class="download-link" href="https://drive.google.com/file/d/11Vp4T1JZD4qVXn0KDvbypGlwhJlm_Y_4/view?usp=sharing" target="_blank">
-        <i class="fa fa-download fa-lg fa-fw"></i> Download as PDF</a>
-      <div style="clear:both"></div>
+<div class="paragraph">
+      Hi! I'm <strong>Ulises Alvarenga</strong>, a Unity Game Developer specializing in VR/XR, multiplayer systems, and gameplay architecture. I own full feature cycles — from architecture to ship.
     </div>
-  </div>
     <div class="photo">
       <img :src="`img/1694482121256.jpeg`" alt="Here's should be my photo" class="avatar" /> 
     </div>
   </div>
-    
+    <div style="margin-top:20px; margin-bottom:20px;">
+      <a class="download-link" href="https://drive.google.com/file/d/1OaSpW0gaUUPlmTFySfSt3GvJPMQqmTYL/view?usp=sharing" target="_blank">
+        <i class="fa fa-download fa-lg fa-fw"></i> Download as PDF</a>
+      <div style="clear:both"></div>
     <div style="clear:both"></div>
+    </div>
 
     <div class="full-content">
       <h2>Work experience</h2>
