@@ -200,9 +200,9 @@ new ProjectData("project-7", "Wonderland", "img/projects/wonderland.jpg", `
         </div>
         <div class="paragraph">
             <ul>
-                <li>Engine: Godot.</li>
-                <li>Language: GDScript.</li>
-                <li>Platform: Windows.</li>
+                <li>Engine: Unity Engine.</li>
+                <li>Language: C#.</li>
+                <li>Platform: Windows/VR.</li>
                 <li>Inputs: WASD move, Mouse camera, E interact, SPACE reel flashlight.</li>
             </ul>
         </div>
