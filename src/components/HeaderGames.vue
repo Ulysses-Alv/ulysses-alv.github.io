@@ -2,7 +2,7 @@
   <header class="site-header">
     <div class="header-inner container">
       <!-- Logo -->
-      <a href="#" class="logo" aria-label="Ulises Alvarenga - home">
+      <a href="/" class="logo" aria-label="Ulises Alvarenga - home">
         <span class="logo-avatar">
           <img src="/img/1694482121256.jpeg" alt="Ulises logo" width="32" height="32" />
         </span>
@@ -11,9 +11,9 @@
 
       <!-- Desktop Nav -->
       <nav class="nav-desktop" aria-label="Primary">
-        <a href="#about" class="nav-link">About</a>
-        <a href="/games" class="nav-link">Games</a>
-        <a href="#resume" class="nav-link">Resume</a>
+        <a href="/" class="nav-link">Home</a>
+        <a href="/games" class="nav-link nav-link--active">Games</a>
+        <a href="/#resume" class="nav-link">Resume</a>
         <a href="mailto:ulises.j.alvarenga@gmail.com" target="_blank" rel="noopener noreferrer"
           class="nav-link nav-link--cta">
           Get in touch
@@ -28,9 +28,9 @@
 
       <!-- Mobile Nav Drawer -->
       <nav class="nav-mobile" aria-label="Mobile navigation">
-        <a href="#about" class="nav-link">About</a>
+        <a href="/" class="nav-link">Home</a>
         <a href="/games" class="nav-link">Games</a>
-        <a href="#resume" class="nav-link">Resume</a>
+        <a href="/#resume" class="nav-link">Resume</a>
         <a href="mailto:ulises.j.alvarenga@gmail.com" class="nav-link">Get in touch</a>
       </nav>
     </div>
@@ -41,7 +41,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Header',
+  name: 'HeaderGames',
 });
 </script>
 
@@ -52,65 +52,71 @@ export default defineComponent({
 .site-header {
   position: sticky;
   top: 0;
-  z-index: var(--z-sticky);
+  z-index: var(--z-sticky, 30);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   background: rgba(0, 13, 38, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4rem; // 64px
-  gap: var(--space-4);
+  height: 4rem;
+  gap: 1rem;
 }
 
-// === Logo ===
+// Logo
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.625rem;
   text-decoration: none;
-  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .logo-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
   overflow: hidden;
   ring: 1px solid rgba(255, 255, 255, 0.15);
-  transition: box-shadow var(--transition-base);
-
-  &:hover {
-    box-shadow: var(--glow-accent);
-  }
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  transition: box-shadow 0.2s ease;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
+  .logo:hover & {
+    box-shadow: 0 0 20px var(--color-accent-glow);
+  }
 }
 
 .logo-name {
   font-family: var(--font-display);
   font-size: var(--text-lg);
-  font-weight: var(--font-semibold);
-  color: var(--color-white);
+  font-weight: 600;
   letter-spacing: -0.02em;
+  color: var(--color-white);
 }
 
-// === Desktop Nav ===
+// Desktop Nav
 .nav-desktop {
   display: none;
   align-items: center;
-  gap: var(--space-1);
+  gap: 0.25rem;
 
   @media (min-width: 768px) {
     display: flex;
@@ -150,7 +156,7 @@ export default defineComponent({
   }
 }
 
-// === Mobile Nav ===
+// Mobile Nav Toggle (CSS-only hamburger)
 .nav-toggle-input {
   display: none;
 }
@@ -159,11 +165,11 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   cursor: pointer;
-  border-radius: var(--radius-md);
-  transition: background var(--transition-fast);
+  border-radius: 0.5rem;
+  transition: background 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.06);
@@ -176,46 +182,30 @@ export default defineComponent({
 
 .hamburger {
   position: relative;
-  width: 18px;
-  height: 2px;
-  background: rgba(244, 244, 245, 0.7);
-  border-radius: 1px;
-  transition: background var(--transition-fast);
+  width: 1.25rem;
+  height: 0.875rem;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
     left: 0;
-    width: 18px;
+    width: 100%;
     height: 2px;
-    background: rgba(244, 244, 245, 0.7);
-    border-radius: 1px;
-    transition: transform var(--transition-fast);
+    background: var(--color-white);
+    transition: transform 0.3s ease;
   }
 
   &::before {
-    top: -5px;
+    top: 0;
   }
 
   &::after {
-    top: 5px;
+    bottom: 0;
   }
 }
 
-// Show hamburger menu when checkbox is checked
-.nav-toggle-input:checked~.nav-toggle-label .hamburger {
-  background: transparent;
-
-  &::before {
-    transform: rotate(45deg) translate(3px, 3px);
-  }
-
-  &::after {
-    transform: rotate(-45deg) translate(3px, -3px);
-  }
-}
-
+// Mobile Nav Drawer
 .nav-mobile {
   display: none;
   position: absolute;
@@ -223,21 +213,22 @@ export default defineComponent({
   left: 0;
   right: 0;
   flex-direction: column;
-  padding: var(--space-4) var(--space-6);
+  padding: 0.5rem;
   background: rgba(0, 13, 38, 0.95);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
-  .nav-link {
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--text-base);
+  .nav-toggle-input:checked + .nav-toggle-label + & {
+    display: flex;
   }
 
-  @media (max-width: 767px) {
-    .nav-toggle-input:checked~& {
-      display: flex;
-    }
+  @media (min-width: 768px) {
+    display: none !important;
   }
+}
+
+.nav-mobile .nav-link {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
 }
 </style>
