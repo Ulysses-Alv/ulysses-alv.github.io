@@ -8,9 +8,17 @@
     // GitHub Pages SPA redirect - preserves clean URLs
     (function() {
       var path = window.location.pathname.replace(/\/$/, '') || '/';
-      var query = window.location.search || '';
       var hash = window.location.hash || '';
-      var target = '/' + 'index.html' + (path !== '/' ? '?/' + path : '') + query + hash;
+      // Vue Router hash mode: redirect /games → /index.html#/games
+      var cleanPath = path.replace(/^\//, '').replace(/^index\.html$/, '');
+      var target = '/index.html';
+      if (cleanPath) {
+        target += '#/' + cleanPath;
+      }
+      // If original URL had a hash (e.g. /games#section), preserve it
+      if (hash && hash !== '#/') {
+        target += hash.replace(/^#/, '');
+      }
       window.location.replace(target);
     })();
   </script>
