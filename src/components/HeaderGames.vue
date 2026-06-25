@@ -11,9 +11,9 @@
 
       <!-- Desktop Nav -->
       <nav class="nav-desktop" aria-label="Primary">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/games" class="nav-link nav-link--active">Games</a>
-        <a href="/#resume" class="nav-link">Resume</a>
+        <router-link to="/" class="nav-link">Home</router-link>
+        <router-link to="/games" class="nav-link nav-link--active">Games</router-link>
+        <router-link to="/#resume" class="nav-link">Resume</router-link>
         <a href="mailto:ulises.j.alvarenga@gmail.com" target="_blank" rel="noopener noreferrer"
           class="nav-link nav-link--cta">
           Get in touch
@@ -28,9 +28,9 @@
 
       <!-- Mobile Nav Drawer -->
       <nav class="nav-mobile" aria-label="Mobile navigation">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/games" class="nav-link">Games</a>
-        <a href="/#resume" class="nav-link">Resume</a>
+        <router-link to="/" class="nav-link">Home</router-link>
+        <router-link to="/games" class="nav-link">Games</router-link>
+        <router-link to="/#resume" class="nav-link">Resume</router-link>
         <a href="mailto:ulises.j.alvarenga@gmail.com" class="nav-link">Get in touch</a>
       </nav>
     </div>
