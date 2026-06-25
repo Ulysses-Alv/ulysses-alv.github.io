@@ -1,6 +1,7 @@
 <template>
-  <section class="hero">
-    <div class="container">
+  <section ref="heroRef" class="hero">
+    <SpaceBackground v-if="isDesktop" :hero-ref="heroRef" />
+    <div class="container hero-content">
       <!-- WIP Label -->
       <span class="hero-label">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="#FF4FB4" aria-hidden="true" class="animate-twinkle" style="transform: rotate(20deg)">
@@ -48,10 +49,42 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue';
+import SpaceBackground from './SpaceBackground.vue';
 
 export default defineComponent({
   name: 'Hero',
+  components: {
+    SpaceBackground,
+  },
+  setup() {
+    const heroRef = ref<HTMLElement | null>(null);
+    const isDesktop = ref(
+      typeof window !== 'undefined'
+        ? window.matchMedia('(pointer: fine)').matches
+        : false,
+    );
+
+    let mediaQuery: MediaQueryList | null = null;
+
+    onMounted(() => {
+      if (typeof window === 'undefined') return;
+      mediaQuery = window.matchMedia('(pointer: fine)');
+      const onChange = (event: MediaQueryListEvent) => {
+        isDesktop.value = event.matches;
+      };
+      mediaQuery.addEventListener('change', onChange);
+
+      onBeforeUnmount(() => {
+        mediaQuery?.removeEventListener('change', onChange);
+      });
+    });
+
+    return {
+      heroRef,
+      isDesktop,
+    };
+  },
 });
 </script>
 
@@ -60,10 +93,16 @@ export default defineComponent({
 @import '../css/design-system.less';
 
 .hero {
+  position: relative;
   min-height: calc(100vh - 4rem);
   display: flex;
   align-items: center;
   padding: var(--space-16) 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 // === Label ===
