@@ -15,6 +15,9 @@ export default ({ mode }) => {
   return defineConfig({
     plugins: [vue()],
     base: base,
+    define: {
+      __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '2.0.0')
+    },
     resolve: {
       alias: [
         { find: "@", replacement: fileURLToPath(new URL('./src', import.meta.url)) }

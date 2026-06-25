@@ -6,6 +6,7 @@ import {
   onBeforeUnmount,
   type Ref,
 } from 'vue';
+import powerUpImage from '../spaceship/Power Up.png';
 
 // ============================================================
 // Physics constants (v2 heading + speed model)
@@ -24,6 +25,17 @@ export const TILE_SIZE = 4096; // px — wrap boundary for seamless tiling
 export const FRAME_INTERVAL = 1000 / 30; // ~33.33ms for 30fps cap
 export const IDLE_THRESHOLD = 5000; // ms before idle mode
 export const IDLE_SPEED_THRESHOLD = 1; // px/s — near-zero speed
+
+// ============================================================
+// Collectible item constants
+// ============================================================
+export const ITEM_SPAWN_MIN_MS = 3000;
+export const ITEM_SPAWN_MAX_MS = 5000;
+export const ITEM_CAP = 10;
+export const ITEM_SCORE_VALUE = 100;
+export const ITEM_SIZE = 60;
+export const SHIP_HITBOX = 130;
+export const DESPAWN_MARGIN = 100;
 
 // ============================================================
 // Starfield configuration — tweak these to change density/size
@@ -52,6 +64,16 @@ export const STAR_APPEARANCE: StarAppearanceConfig = {
 // ============================================================
 // Types
 // ============================================================
+export interface CollectibleItem {
+  /** DOM element rendered as a child of layer-3. */
+  el: HTMLElement;
+  /** Fixed X position within the oversized layer-3 div (px). */
+  localX: number;
+  /** Fixed Y position within the oversized layer-3 div (px). */
+  localY: number;
+}
+
+// ============================================================
 export interface LayerOffset {
   x: number;
   y: number;
@@ -64,8 +86,12 @@ export interface SpaceNavigationState {
   // RAF loop can write style.transform directly, bypassing Vue reactivity.
   registerLayerEl: (index: number, el: HTMLElement | null) => void;
   registerShipEl: (el: HTMLElement | null) => void;
+  registerScoreEl: (el: HTMLElement | null) => void;
   // speed is still reactive so the exhaust/filter computed can read it.
   speed: Ref<number>;
+  // score is reactive for external readers; the RAF loop writes the display
+  // element directly via innerText to avoid per-frame Vue re-renders.
+  score: Ref<number>;
 }
 
 export interface KeyState {
@@ -260,6 +286,8 @@ export function useSpaceNavigation(
   const isCapped = ref(false);
   // speed is reactive so exhaustIntensity computed in the component stays live.
   const speed = ref(0);
+  // score is reactive for external readers; display updates are direct DOM writes.
+  const score = ref(0);
 
   // Plain mutable physics state — not reactive, zero Vue overhead per frame.
   const physics: PhysicsState = {
@@ -273,12 +301,84 @@ export function useSpaceNavigation(
   const layerEls: (HTMLElement | null)[] = [null, null, null, null];
   let shipEl: HTMLElement | null = null;
 
+  // Score display element — written directly by flushDOM().
+  let scoreEl: HTMLElement | null = null;
+
+  // Active collectible items (children of layer-3).
+  const items: CollectibleItem[] = [];
+  const LAYER3_INDEX = 3;
+  let spawnAccumulator = 0;
+  let spawnThreshold = ITEM_SPAWN_MIN_MS + Math.random() * (ITEM_SPAWN_MAX_MS - ITEM_SPAWN_MIN_MS);
+
   function registerLayerEl(index: number, el: HTMLElement | null): void {
     layerEls[index] = el;
   }
 
   function registerShipEl(el: HTMLElement | null): void {
     shipEl = el;
+  }
+
+  function registerScoreEl(el: HTMLElement | null): void {
+    scoreEl = el;
+  }
+
+  /**
+   * Spawn a collectible item ahead of the ship in layer-3 world space.
+   * Items are children of the layer-3 oversized div and scroll with parallax.
+   */
+  function spawnItem(): void {
+    const layer3 = layerEls[LAYER3_INDEX];
+    if (!layer3) return;
+
+    let item: CollectibleItem;
+
+    // Pool reuse: if at max capacity, reuse the oldest item instead of creating new DOM.
+    if (items.length >= ITEM_CAP) {
+      item = items.shift()!;
+    } else {
+      // Create DOM element only when pool has room.
+      const el = document.createElement('img');
+      el.src = powerUpImage;
+      el.style.position = 'absolute';
+      el.style.width = `${ITEM_SIZE}px`;
+      el.style.height = `${ITEM_SIZE}px`;
+      el.style.pointerEvents = 'none';
+      el.style.willChange = 'transform';
+      layer3.appendChild(el);
+      item = { el, localX: 0, localY: 0 };
+    }
+
+    // Spawn in the OPPOSITE direction of ship heading, outside the viewport.
+    // 30° cone (±15°) centered on the opposite heading vector.
+    // Distance must be within the layer's ~4096px movement range so items are reachable.
+    const shipScreenX = window.innerWidth * 0.9;
+    const shipScreenY = window.innerHeight * 0.5;
+    const headingRad = (physics.heading * Math.PI) / 180;
+    const oppositeAngle = headingRad + Math.PI + (Math.random() * 2 - 1) * (Math.PI / 12); // ±15°, ~30° cone
+    const distance = 2000 + Math.random() * 1500; // 2000–3500px: far enough to be outside viewport, within parallax range
+
+    const spawnScreenX = shipScreenX + Math.cos(oppositeAngle) * distance;
+    const spawnScreenY = shipScreenY + Math.sin(oppositeAngle) * distance;
+
+    const offset3 = physics.layerOffsets[LAYER3_INDEX];
+    const localX = spawnScreenX - offset3.x + 4096;
+    const localY = spawnScreenY - offset3.y + 4096;
+
+    item.el.style.left = `${localX}px`;
+    item.el.style.top = `${localY}px`;
+    item.localX = localX;
+    item.localY = localY;
+
+    items.push(item);
+  }
+
+  function spawnTick(dt: number): void {
+    spawnAccumulator += dt * 1000;
+    if (spawnAccumulator >= spawnThreshold) {
+      spawnAccumulator = 0;
+      spawnThreshold = ITEM_SPAWN_MIN_MS + Math.random() * (ITEM_SPAWN_MAX_MS - ITEM_SPAWN_MIN_MS);
+      spawnItem();
+    }
   }
 
   const keys: KeyState = {
@@ -354,10 +454,84 @@ export function useSpaceNavigation(
     if (shipEl) {
       shipEl.style.transform = `translateY(-50%) rotate(${(physics.heading - 90).toFixed(2)}deg)`;
     }
+
+    // Collectible items: read screen position from fixed local coords + offset,
+    // then handle despawn and collision entirely within the RAF pass.
+    const viewportH = window.innerHeight;
+    const viewportW = window.innerWidth;
+    const offset3 = physics.layerOffsets[LAYER3_INDEX];
+    const shipHitboxX = viewportW * 0.9 - SHIP_HITBOX / 2;
+    const shipHitboxY = viewportH * 0.5 - SHIP_HITBOX / 2;
+
+    for (let i = items.length - 1; i >= 0; i--) {
+      const item = items[i];
+      const screenX = item.localX + offset3.x - 4096;
+      const screenY = item.localY + offset3.y - 4096;
+      const itemCX = screenX + ITEM_SIZE / 2;
+      const itemCY = screenY + ITEM_SIZE / 2;
+
+      // Despawn if below viewport OR if scrolled too far above (changed direction).
+      if (screenY > viewportH + DESPAWN_MARGIN || screenY < -ITEM_SIZE - DESPAWN_MARGIN) {
+        item.el.remove();
+        items.splice(i, 1);
+        continue;
+      }
+
+      if (
+        itemCX > shipHitboxX &&
+        itemCX < shipHitboxX + SHIP_HITBOX &&
+        itemCY > shipHitboxY &&
+        itemCY < shipHitboxY + SHIP_HITBOX
+      ) {
+        score.value += ITEM_SCORE_VALUE;
+        item.el.remove();
+        items.splice(i, 1);
+      }
+    }
+
+    if (scoreEl) {
+      scoreEl.innerText = String(score.value).padStart(6, '0');
+    }
   }
 
   function step(dt: number): void {
+    const prevX = physics.layerOffsets[LAYER3_INDEX].x;
+    const prevY = physics.layerOffsets[LAYER3_INDEX].y;
+
     physicsStep(keys, physics, dt);
+
+    const newX = physics.layerOffsets[LAYER3_INDEX].x;
+    const newY = physics.layerOffsets[LAYER3_INDEX].y;
+    const dx = newX - prevX;
+    const dy = newY - prevY;
+
+    // When layer-3 offset wraps around TILE_SIZE, the div's translate jumps
+    // ~4096px. Compensate items so they stay in place visually.
+    // Must also sync the DOM element position since it's only set at spawn.
+    if (dx > TILE_SIZE / 2) {
+      for (const item of items) {
+        item.localX -= TILE_SIZE;
+        item.el.style.left = `${item.localX}px`;
+      }
+    } else if (dx < -TILE_SIZE / 2) {
+      for (const item of items) {
+        item.localX += TILE_SIZE;
+        item.el.style.left = `${item.localX}px`;
+      }
+    }
+    if (dy > TILE_SIZE / 2) {
+      for (const item of items) {
+        item.localY -= TILE_SIZE;
+        item.el.style.top = `${item.localY}px`;
+      }
+    } else if (dy < -TILE_SIZE / 2) {
+      for (const item of items) {
+        item.localY += TILE_SIZE;
+        item.el.style.top = `${item.localY}px`;
+      }
+    }
+
+    spawnTick(dt);
     // Sync the reactive speed ref so exhaustIntensity computed stays accurate.
     // This is the only reactive write per frame — one ref, one value.
     speed.value = physics.speed;
@@ -473,13 +647,19 @@ export function useSpaceNavigation(
     mediaQuery?.removeEventListener('change', onMediaChange);
     stopLoop();
     observer?.disconnect();
+
+    // Clean up any active collectible items to avoid leaking DOM nodes.
+    items.forEach((item) => item.el.remove());
+    items.length = 0;
   });
 
   return {
     isDesktop,
     isCapped,
     speed,
+    score,
     registerLayerEl,
     registerShipEl,
+    registerScoreEl,
   };
 }

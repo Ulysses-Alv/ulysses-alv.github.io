@@ -1,5 +1,5 @@
 <template>
-  <footer class="site-footer">
+  <footer class="site-footer" :data-build-version="appVersion">
     <div class="container">
       <div class="footer-grid">
         <!-- Brand + Bio -->
@@ -69,10 +69,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted } from 'vue';
+
+const APP_VERSION = typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '2.0.0';
 
 export default defineComponent({
   name: 'Footer',
+  setup() {
+    onMounted(() => {
+      console.log(`%c🚀 Build: ${APP_VERSION}`, 'color: #00e5ff; font-weight: bold;');
+      (window as any).__APP_VERSION__ = APP_VERSION;
+    });
+    return { appVersion: APP_VERSION };
+  }
 });
 </script>
 

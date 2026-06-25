@@ -31,6 +31,8 @@
         :style="exhaustStyle"
       />
     </div>
+    <!-- Score display: written directly by the RAF loop via innerText. -->
+    <div ref="scoreDisplayEl" class="score-display">000000</div>
     <!-- WASD controls: fixed position, doesn't move with ship -->
     <img
       class="wasd-controls"
@@ -64,7 +66,13 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { speed, registerLayerEl, registerShipEl } = useSpaceNavigation(props.heroRef);
+    const {
+      speed,
+      score,
+      registerLayerEl,
+      registerShipEl,
+      registerScoreEl,
+    } = useSpaceNavigation(props.heroRef);
 
     // Template refs — registered with the composable after mount so the RAF
     // loop can write style.transform directly without going through Vue.
@@ -72,6 +80,7 @@ export default defineComponent({
     const layer2El = ref<HTMLElement | null>(null);
     const layer3El = ref<HTMLElement | null>(null);
     const shipWrapperEl = ref<HTMLElement | null>(null);
+    const scoreDisplayEl = ref<HTMLElement | null>(null);
 
     // Track blob URLs so we can revoke them on unmount to free GPU memory.
     const blobUrls: string[] = [];
@@ -81,6 +90,7 @@ export default defineComponent({
       registerLayerEl(2, layer2El.value);
       registerLayerEl(3, layer3El.value);
       registerShipEl(shipWrapperEl.value);
+      registerScoreEl(scoreDisplayEl.value);
 
       // Capture element refs for use inside the async callback.
       const l1 = layer1El.value;
@@ -155,11 +165,13 @@ export default defineComponent({
       layer2El,
       layer3El,
       shipWrapperEl,
+      scoreDisplayEl,
       shipWrapperFilterStyle,
       exhaustStyle,
       exhaustIntensity,
       spaceshipImage,
       wasdImage,
+      score,
     };
   },
 });
@@ -256,6 +268,20 @@ export default defineComponent({
   object-fit: contain;
   pointer-events: none;
   filter: invert(1);
+}
+
+.score-display {
+  position: absolute;
+  right: 10%;
+  top: 40%;
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
+  z-index: 10;
+  pointer-events: none;
+  letter-spacing: 4px;
 }
 
 .exhaust {
