@@ -11,8 +11,7 @@
             <span class="logo-name">Ulises</span>
           </a>
           <p class="footer-bio">
-            Unity Game Developer making game dev videos and shipping indie games.
-            4+ years building gameplay systems, VR/XR experiences, and immersive worlds.
+            Unity XR & Software Engineer with 5 years building gameplay systems, VR/XR experiences, AI pipelines, and developer tooling.
           </p>
         </div>
 
@@ -22,6 +21,7 @@
           <ul class="link-list">
             <li><a href="#about">About</a></li>
             <li><a href="/games">Games</a></li>
+            <li><a href="#tools">Tools</a></li>
             <li><a href="#resume">Resume</a></li>
             <li><a href="mailto:ulises.j.alvarenga@gmail.com">Contact</a></li>
           </ul>
@@ -71,7 +71,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue';
 
-const APP_VERSION = typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '2.0.0';
+const APP_VERSION = typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '2.1.2';
 
 export default defineComponent({
   name: 'Footer',

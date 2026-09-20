@@ -5,6 +5,7 @@
     <main class="main-content">
       <Hero />
       <About />
+      <ToolsSection />
       <Resume />
     </main>
 
@@ -17,6 +18,7 @@ import { defineComponent } from 'vue';
 import Header from '../components/Header.vue';
 import Hero from '../components/Hero.vue';
 import About from '../views/About.vue';
+import ToolsSection from '../components/ToolsSection.vue';
 import Resume from '../views/Resume.vue';
 import Footer from '../components/Footer.vue';
 
@@ -26,6 +28,7 @@ export default defineComponent({
     Header,
     Hero,
     About,
+    ToolsSection,
     Resume,
     Footer,
   },

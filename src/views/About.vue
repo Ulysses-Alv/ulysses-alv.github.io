@@ -3,20 +3,20 @@
     <div class="container">
       <SectionHeader 
         title="About" 
-        tagline="Or, the long version."
+        tagline="A little background on what drives my work."
       />
 
       <!-- Bio + Photo layout -->
       <div class="about-content">
         <div class="about-text">
           <p class="bio-text">
-            I'm <strong>Ulises Alvarenga</strong>, a <strong>Unity Developer with 5 years of professional experience</strong>, primarily focused on VR/XR development, gameplay systems, optimization, multiplayer systems, technical architecture, and developer tooling.
+            I'm <strong>Ulises Alvarenga</strong>, a <strong>Unity XR & Software Engineer</strong> with <strong>5 years of professional experience</strong> specializing in VR/XR development, gameplay systems, hardware-constrained optimization, multiplayer networking, and developer tooling.
           </p>
           <p class="bio-text">
-            I own full feature cycles — from architecture and implementation to profiling and ship — with additional depth in AI-driven systems, VR interaction design, and developer tooling.
+            I own full feature cycles — from architecture and implementation to profiling and ship. I have particular depth in Quest standalone performance engineering, real-time AI/LLM integration pipelines, and building developer tools that automate workflows and solve real-world problems.
           </p>
           <p class="bio-text">
-            <strong>Let's build something together!</strong>
+            <strong>Let's build something extraordinary together!</strong>
           </p>
         </div>
 
@@ -30,7 +30,8 @@
 
       <!-- CTAs -->
       <div class="about-ctas">
-        <a href="#resume" class="btn-secondary">Read the long version</a>
+        <a href="#resume" class="btn-secondary">View full resume</a>
+        <a href="#tools" class="btn-ghost">Explore tools & apps -></a>
         <a href="mailto:ulises.j.alvarenga@gmail.com" class="btn-ghost">Get in touch -></a>
       </div>
     </div>
@@ -57,20 +58,20 @@ export default defineComponent({
     return {
       timelineEntries: [
         {
-          year: '2022',
-          description: 'Started my journey as a Unity developer. Built my first games and learned the ropes of game dev.',
+          year: '2021',
+          description: 'Started freelance game and systems development. Built multiplayer prototypes using NGO and provided technical consulting for indie projects.',
         },
         {
-          year: '2023',
-          description: 'Joined F.a.R Team as a Game Programmer. Worked on multiplayer systems and shipped our first titles.',
+          year: '2022',
+          description: 'Joined F.a.R Team as Unity Developer (shipped Room Makers applying SOLID and GoF design patterns). Began Computer Science degree at Universidad Nacional de Quilmes.',
         },
         {
           year: '2024',
-          description: 'Moved to Studio Soup as VR Game Developer. Focusing on XR/VR/MR experiences and immersive gameplay.',
+          description: 'Joined Studio Soup as VR/XR Game Developer. Built real-time LLM voice NPC pipelines, optimized Meta Quest standalone experiences for rock-solid 72 FPS, and contributed to Astropark.',
         },
         {
           year: 'Present',
-          description: 'Building the future of gaming — one commit at a time. Currently working on exciting new VR projects.',
+          description: 'Engineering systems for Abduct & Destroy (Meta Quest), publishing Unity Editor tools to the Asset Store, and shipping local-first fullstack ecosystems.',
         },
       ] as TimelineEntry[],
     };
@@ -101,13 +102,13 @@ export default defineComponent({
 
 .about-text {
   flex: 1;
-  max-width: 600px;
+  max-width: 650px;
 }
 
 .bio-text {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  color: rgba(244, 244, 245, 0.8);
+  color: rgba(244, 244, 245, 0.85);
   margin-bottom: var(--space-4);
 
   &:last-child {
@@ -115,7 +116,7 @@ export default defineComponent({
   }
 
   strong {
-    color: var(--color-text-primary);
+    color: var(--color-white);
   }
 }
 

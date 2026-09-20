@@ -14,6 +14,10 @@ export function createRouter(){
         name: 'Home',
         component: HomeLayout
       },
+      {
+        path: '/index.html',
+        redirect: '/'
+      },
 
       // Games page
       {

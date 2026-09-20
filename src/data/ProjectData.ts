@@ -1,22 +1,42 @@
-export default class ProjectData {
+export interface ProjectItem {
     id: string;
     name: string;
-    shortDescription: string;  // One-liner for portal cards
-    externalUrl?: string;      // "Explore" link target (itch.io, Steam, GitHub, etc.)
-    iconUrl: string;           // Used as thumbnail
-    isWide: boolean;           // Thumbnail will take 2 cols in the grid view
-    isHigh: boolean;           // Thumbnail will take 2 rows in the grid view
-    accentColor: string;       // Color of title bar
+    shortDescription: string;
+    externalUrl: string;
+    githubUrl?: string;
+    tag?: string;
+    accentColor?: string;
+    techStack?: string[];
+    actionText?: string;
+}
+
+export default class ProjectData implements ProjectItem {
+    id: string;
+    name: string;
+    shortDescription: string;
+    externalUrl: string;
+    githubUrl?: string;
+    iconUrl: string;
+    isWide: boolean;
+    isHigh: boolean;
+    accentColor: string;
+    tag?: string;
+    techStack?: string[];
+    actionText?: string;
 
     constructor(
         id: string,
         name: string,
-        iconUrl: string,
-        accentColor = "#000000",
+        iconUrl = '',
+        accentColor = '#00E5FF',
         isHigh = false,
         isWide = false,
         shortDescription = '',
-        externalUrl?: string
+        externalUrl = '',
+        githubUrl?: string,
+        tag?: string,
+        techStack?: string[],
+        actionText?: string
     ) {
         this.id = id;
         this.name = name;
@@ -26,5 +46,9 @@ export default class ProjectData {
         this.isWide = isWide;
         this.shortDescription = shortDescription;
         this.externalUrl = externalUrl;
+        this.githubUrl = githubUrl;
+        this.tag = tag;
+        this.techStack = techStack;
+        this.actionText = actionText;
     }
 }

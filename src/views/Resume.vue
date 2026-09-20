@@ -1,12 +1,12 @@
 <template>
   <section id="resume" class="resume-section">
     <div class="container">
-      <SectionHeader title="Resume" />
+      <SectionHeader title="Resume" tagline="Professional experience, technical skills, and background." />
 
       <!-- Bio intro -->
       <div class="resume-intro">
         <p class="intro-text">
-          Unity Game Developer specializing in VR/XR, multiplayer systems, and gameplay architecture. I own full feature cycles — from architecture to ship.
+          <strong>Unity XR & Software Engineer</strong> with <strong>5 years</strong> of professional experience specializing in VR/XR development (Quest standalone optimization, OpenXR), gameplay systems architecture, real-time multiplayer, and developer tooling.
         </p>
       </div>
 
@@ -23,82 +23,213 @@
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Download as PDF
+          Download PDF
         </a>
       </div>
 
       <!-- Work Experience -->
       <div class="resume-block">
-        <h2 class="block-title">Work experience</h2>
+        <h2 class="block-title">Work Experience</h2>
 
+        <!-- Studio Soup -->
         <div class="job">
           <div class="job-header">
-            <h3 class="job-title">Studio Soup — VR Game Developer</h3>
+            <div>
+              <h3 class="job-title">Studio Soup — VR / XR Game Developer</h3>
+              <span class="job-role">VR/XR Gameplay, Architecture, Optimization & AI Pipelines</span>
+            </div>
             <span class="job-date mono">01/2024 - PRESENT</span>
           </div>
-          <p class="job-description">Game Developer on XR/VR/MR games.</p>
+
+          <ul class="job-bullets">
+            <li>
+              <strong>AI NPC Voice Architecture:</strong> Designed and deployed real-time VR NPC pipeline (STT → Prompt Engineering & Token Management → LLM Processing → TTS → VR Character reactions) with latency-aware retry and fallback systems.
+            </li>
+            <li>
+              <strong>Quest Performance Optimization:</strong> Profiled and optimized standalone VR experiences to sustain stable 72 FPS using OVR Metrics Tool, Unity Profiler, Frame Debugger, dynamic occlusion culling, draw call reduction, and shader simplification.
+            </li>
+            <li>
+              <strong>Abduct & Destroy (Meta Quest):</strong> Full systems ownership covering UI lifecycle (uGUI + DOTween), procedural generation, custom occlusion culling for Quest 2, enemy AI behaviors, physics interactions, and save/telemetry systems.
+            </li>
+            <li>
+              <strong>Astropark (Meta Quest):</strong> Owned core gameplay systems, VR interaction mechanics, and release optimization pipeline for published Meta Quest title.
+            </li>
+            <li>
+              <strong>Multiplayer VR:</strong> Implemented LAN multiplayer using Netcode for GameObjects (NGO) with server-authoritative state synchronization.
+            </li>
+          </ul>
+
           <div class="job-tech">
-            <span class="pill-accent">VR</span>
-            <span class="pill-accent">MR</span>
-            <span class="pill-accent">XR</span>
+            <span class="pill-accent">VR / XR</span>
+            <span class="pill-accent">OpenXR</span>
+            <span class="pill-accent">Meta SDK</span>
             <span class="pill-accent">Unity</span>
             <span class="pill-accent">C#</span>
-            <span class="pill-accent">Git</span>
+            <span class="pill-accent">LLM / STT-TTS</span>
+            <span class="pill-accent">NGO (Netcode)</span>
+            <span class="pill-accent">Quest 72 FPS Profiling</span>
+            <span class="pill-accent">Zenject</span>
           </div>
         </div>
 
+        <!-- Freelance -->
         <div class="job">
           <div class="job-header">
-            <h3 class="job-title">F.a.R Team — Game Developer</h3>
-            <span class="job-date mono">11/2022 - 01/2024</span>
+            <div>
+              <h3 class="job-title">Freelance — Unity & Systems Developer</h3>
+              <span class="job-role">Multiplayer Systems, Prototyping & Technical Consulting</span>
+            </div>
+            <span class="job-date mono">2021 - PRESENT</span>
           </div>
-          <p class="job-description">Game Programmer at F.a.R Team.</p>
+
+          <ul class="job-bullets">
+            <li>
+              <strong>Multiplayer Architecture:</strong> Developed server-authoritative multiplayer prototypes using NGO and Steamworks (state synchronization, network ownership, replication).
+            </li>
+            <li>
+              <strong>Technical Consulting:</strong> Delivered client solutions across VR, mobile, and 3D games, focusing on architecture refactoring, performance profiling, and system decoupling.
+            </li>
+          </ul>
+
           <div class="job-tech">
             <span class="pill-accent">Unity</span>
             <span class="pill-accent">C#</span>
-            <span class="pill-accent">Trello</span>
+            <span class="pill-accent">NGO (Netcode)</span>
+            <span class="pill-accent">Steamworks</span>
+            <span class="pill-accent">Multiplayer</span>
+            <span class="pill-accent">Technical Consulting</span>
+            <span class="pill-accent">Git</span>
+          </div>
+        </div>
+
+        <!-- F.a.R Team -->
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <h3 class="job-title">F.a.R Team — Unity Developer</h3>
+              <span class="job-role">Game Systems & Architecture Refactoring</span>
+            </div>
+            <span class="job-date mono">11/2022 - 01/2024</span>
+          </div>
+
+          <ul class="job-bullets">
+            <li>
+              <strong>Room Makers (Google Play):</strong> Refactored core systems and decoupled legacy code applying SOLID principles and GoF design patterns (Factory, Observer, Singleton, Command).
+            </li>
+            <li>
+              Collaborated in an Agile Scrum environment with Jira, Trello, and Git version control.
+            </li>
+          </ul>
+
+          <div class="job-tech">
+            <span class="pill-accent">Unity</span>
+            <span class="pill-accent">C#</span>
+            <span class="pill-accent">SOLID</span>
+            <span class="pill-accent">Design Patterns</span>
+            <span class="pill-accent">Android</span>
             <span class="pill-accent">Git</span>
           </div>
         </div>
       </div>
 
-      <!-- Skills -->
+      <!-- Featured Developer Tooling & Ecosystem -->
       <div class="resume-block">
-        <h2 class="block-title">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-item">
-            <span class="skill-name">Unity</span>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 90%"></div>
+        <h2 class="block-title">Featured Tools & Ecosystem</h2>
+        <div class="featured-tools-list">
+          <div class="tool-entry">
+            <div class="tool-entry-head">
+              <a href="https://fitapp.vlys.com.ar" target="_blank" rel="noopener noreferrer" class="tool-link">
+                FitApp & FitWeb ↗
+              </a>
+              <span class="tool-badge">Android + Web Ecosystem</span>
             </div>
+            <p class="tool-desc">
+              Local-first strength tracking ecosystem. Native Android app (Kotlin, Jetpack Compose, 100% offline) synced in real-time to a React/TS web dashboard (Firebase Auth & Firestore) with scientific 1RM analytics.
+            </p>
           </div>
-          <div class="skill-item">
-            <span class="skill-name">C#</span>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 85%"></div>
+
+          <div class="tool-entry">
+            <div class="tool-entry-head">
+              <a href="https://vlys.com.ar/log_splitter" target="_blank" rel="noopener noreferrer" class="tool-link">
+                Log Splitter ↗
+              </a>
+              <span class="tool-badge">Developer Tooling</span>
             </div>
+            <p class="tool-desc">
+              Browser-based utility for parsing, filtering, and partitioning massive Unity player logs and build dumps without server uploads.
+            </p>
           </div>
-          <div class="skill-item">
-            <span class="skill-name">Python</span>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 60%"></div>
+
+          <div class="tool-entry">
+            <div class="tool-entry-head">
+              <a href="https://vlys.com.ar/git-branch-visualizer" target="_blank" rel="noopener noreferrer" class="tool-link">
+                Git Branch Visualizer ↗
+              </a>
+              <span class="tool-badge">Git & Productivity</span>
             </div>
+            <p class="tool-desc">
+              Interactive visualization tool to graph, simulate, and teach complex Git branching flows, rebases, and merge histories.
+            </p>
           </div>
-          <div class="skill-item">
-            <span class="skill-name">OpenXR</span>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 75%"></div>
+
+          <div class="tool-entry">
+            <div class="tool-entry-head">
+              <a href="https://assetstore.unity.com/packages/tools/gui/vlys-scene-notes-lite-363010" target="_blank" rel="noopener noreferrer" class="tool-link">
+                Vlys Scene Notes Lite ↗
+              </a>
+              <span class="tool-badge">Unity Asset Store</span>
             </div>
+            <p class="tool-desc">
+              Published Unity Editor extension to attach sticky notes, spatial markers, and contextual documentation inside 3D scene hierarchies.
+            </p>
           </div>
         </div>
       </div>
 
-      <!-- Education -->
+      <!-- Skills Pillars -->
       <div class="resume-block">
-        <h2 class="block-title">Education</h2>
+        <h2 class="block-title">Core Competencies & Skills</h2>
+        <div class="skills-pillars-grid">
+          <div class="pillar-card">
+            <h3 class="pillar-title">XR & Engine Development</h3>
+            <p class="pillar-content">
+              OpenXR, Meta SDK, XR Interaction Toolkit, URP, Shader Graph, uGUI, UI Toolkit, DOTween, Procedural Generation, Zenject (DI).
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <h3 class="pillar-title">Performance & Profiling</h3>
+            <p class="pillar-content">
+              Quest Standalone Optimization (Stable 72 FPS), OVR Metrics Tool, Unity Profiler, Frame Debugger, Dynamic Occlusion Culling, Batching, LOD Groups, Draw Call Reduction.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <h3 class="pillar-title">Architecture & Languages</h3>
+            <p class="pillar-content">
+              C# (Advanced), Python, TypeScript, Kotlin, SOLID Principles, GoF Design Patterns, Clean / Hexagonal Architecture, Domain Modeling.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <h3 class="pillar-title">Multiplayer, AI & Cloud</h3>
+            <p class="pillar-content">
+              Netcode for GameObjects (NGO), Steamworks, Server-Authoritative Architecture, Real-Time LLM Pipelines (STT/TTS), Firebase Firestore, Git.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education & Courses -->
+      <div class="resume-block">
+        <h2 class="block-title">Education & Certifications</h2>
         <div class="edu-item">
           <h3 class="edu-title">Universidad Nacional de Quilmes</h3>
-          <p class="edu-degree">Bachelor's degree <em>(in progress)</em></p>
+          <p class="edu-degree">Licenciatura en Informática / Bachelor's in Computer Science <em>(2022 - Present, in progress)</em></p>
+        </div>
+        <div class="edu-item">
+          <h3 class="edu-title">Design Patterns for Videogames — Daniel Parra</h3>
+          <p class="edu-degree">Specialization in SOLID, GoF Design Patterns, and Scalable Unity Architecture.</p>
         </div>
       </div>
 
@@ -112,7 +243,7 @@
           </div>
           <div class="lang-item">
             <h3 class="lang-name">English</h3>
-            <p class="lang-level">Professional Proficiency</p>
+            <p class="lang-level">B2 Certified (Professional Working Proficiency)</p>
           </div>
         </div>
       </div>
@@ -147,8 +278,12 @@ export default defineComponent({
 .intro-text {
   font-size: var(--text-xl);
   line-height: var(--leading-relaxed);
-  color: rgba(244, 244, 245, 0.8);
-  max-width: 700px;
+  color: rgba(244, 244, 245, 0.85);
+  max-width: 800px;
+
+  strong {
+    color: var(--color-white);
+  }
 }
 
 .resume-download {
@@ -156,7 +291,7 @@ export default defineComponent({
 }
 
 .resume-block {
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-14);
 }
 
 .block-title {
@@ -171,7 +306,11 @@ export default defineComponent({
 
 // === Job ===
 .job {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
 
   &:last-child {
     margin-bottom: 0;
@@ -182,64 +321,145 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   gap: var(--space-2);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
 }
 
 .job-title {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   font-weight: var(--font-semibold);
-  color: var(--color-text-primary);
+  color: var(--color-white);
+  margin: 0;
+}
+
+.job-role {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  margin-top: var(--space-1);
 }
 
 .job-date {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
 }
 
-.job-description {
+.job-bullets {
+  margin: 0 0 var(--space-4) 0;
+  padding-left: var(--space-5);
+  color: rgba(244, 244, 245, 0.8);
   font-size: var(--text-base);
-  color: rgba(244, 244, 245, 0.7);
-  margin-bottom: var(--space-3);
+  line-height: var(--leading-relaxed);
+
+  li {
+    margin-bottom: var(--space-2);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--color-white);
+    }
+  }
 }
 
 .job-tech {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-// === Skills ===
-.skills-grid {
+// === Featured Tools in Resume ===
+.featured-tools-list {
   display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-4);
-  max-width: 500px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.skill-item {
+.tool-entry {
+  background: rgba(0, 229, 255, 0.03);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.tool-entry-head {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
-.skill-name {
+.tool-link {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.tool-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-pink);
+  background: rgba(255, 79, 180, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.tool-desc {
   font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  color: var(--color-text-primary);
+  line-height: var(--leading-normal);
+  color: rgba(244, 244, 245, 0.7);
+  margin: 0;
 }
 
-.skill-bar {
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
-  overflow: hidden;
+// === Skills Pillars ===
+.skills-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.skill-level {
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-pink));
-  border-radius: var(--radius-full);
+.pillar-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.pillar-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-white);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.pillar-content {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: rgba(244, 244, 245, 0.75);
+  margin: 0;
 }
 
 // === Education ===
@@ -260,14 +480,13 @@ export default defineComponent({
 
 .edu-degree {
   font-size: var(--text-base);
-  color: rgba(244, 244, 245, 0.7);
-  font-style: italic;
+  color: rgba(244, 244, 245, 0.75);
 }
 
 // === Languages ===
 .languages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-6);
 }
 
@@ -288,6 +507,6 @@ export default defineComponent({
 
 .lang-level {
   font-size: var(--text-sm);
-  color: rgba(244, 244, 245, 0.6);
+  color: rgba(244, 244, 245, 0.65);
 }
 </style>

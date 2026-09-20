@@ -18,15 +18,15 @@
           
         </span>.
         <br class="break-sm" />
-        I make <span class="gradient-text">game dev</span> videos
+        I'm a <span class="gradient-text">VR Game Dev</span>
         <br class="break-sm" />
         and ship <span class="gradient-text">indie games</span>.
       </h1>
 
       <!-- Description -->
       <p class="hero-description">
-        Unity Game Developer with 4+ years building gameplay systems, real-time
-        multiplayer, and immersive experiences across PC, mobile, and VR/XR platforms.
+        Unity XR & Software Engineer with 5 years building gameplay systems, real-time
+        multiplayer, AI NPC pipelines, and developer tooling across VR/XR, PC, and mobile platforms.
         I own full feature cycles — from architecture to ship.
       </p>
 
@@ -38,8 +38,9 @@
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </a>
-        <a href="#resume" class="btn-secondary">Resume</a>
-        <a href="https://github.com/ulysses-alv" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+        <a href="#tools" class="btn-secondary">Tools & Apps</a>
+        <a href="#resume" class="btn-ghost">Resume</a>
+        <a href="https://github.com/Ulysses-Alv" target="_blank" rel="noopener noreferrer" class="btn-ghost">
           GitHub ↗
         </a>
       </div>

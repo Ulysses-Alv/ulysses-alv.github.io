@@ -13,6 +13,7 @@
       <nav class="nav-desktop" aria-label="Primary">
         <router-link to="/" class="nav-link">Home</router-link>
         <router-link to="/games" class="nav-link nav-link--active">Games</router-link>
+        <router-link to="/#tools" class="nav-link">Tools</router-link>
         <router-link to="/#resume" class="nav-link">Resume</router-link>
         <a href="mailto:ulises.j.alvarenga@gmail.com" target="_blank" rel="noopener noreferrer"
           class="nav-link nav-link--cta">
@@ -30,6 +31,7 @@
       <nav class="nav-mobile" aria-label="Mobile navigation">
         <router-link to="/" class="nav-link">Home</router-link>
         <router-link to="/games" class="nav-link">Games</router-link>
+        <router-link to="/#tools" class="nav-link">Tools</router-link>
         <router-link to="/#resume" class="nav-link">Resume</router-link>
         <a href="mailto:ulises.j.alvarenga@gmail.com" class="nav-link">Get in touch</a>
       </nav>
