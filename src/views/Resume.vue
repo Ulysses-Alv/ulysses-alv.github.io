@@ -190,28 +190,36 @@
       <div class="resume-block">
         <h2 class="block-title">Core Competencies & Skills</h2>
         <div class="skills-pillars-grid">
-          <div class="pillar-card">
+          <div
+            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('XR & Engine Development') }]"
+          >
             <h3 class="pillar-title">XR & Engine Development</h3>
             <p class="pillar-content">
               OpenXR, Meta SDK, XR Interaction Toolkit, URP, Shader Graph, uGUI, UI Toolkit, DOTween, Procedural Generation, Zenject (DI).
             </p>
           </div>
 
-          <div class="pillar-card">
+          <div
+            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('Performance & Profiling') }]"
+          >
             <h3 class="pillar-title">Performance & Profiling</h3>
             <p class="pillar-content">
               Quest Standalone Optimization (Stable 72 FPS), OVR Metrics Tool, Unity Profiler, Frame Debugger, Dynamic Occlusion Culling, Batching, LOD Groups, Draw Call Reduction.
             </p>
           </div>
 
-          <div class="pillar-card">
+          <div
+            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('Architecture & Languages') }]"
+          >
             <h3 class="pillar-title">Architecture & Languages</h3>
             <p class="pillar-content">
               C# (Advanced), Python, TypeScript, Kotlin, SOLID Principles, GoF Design Patterns, Clean / Hexagonal Architecture, Domain Modeling.
             </p>
           </div>
 
-          <div class="pillar-card">
+          <div
+            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('Multiplayer, AI & Cloud') }]"
+          >
             <h3 class="pillar-title">Multiplayer, AI & Cloud</h3>
             <p class="pillar-content">
               Netcode for GameObjects (NGO), Steamworks, Server-Authoritative Architecture, Real-Time LLM Pipelines (STT/TTS), Firebase Firestore, Git.
@@ -254,11 +262,25 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import SectionHeader from '@/components/SectionHeader.vue';
+import { useRoleLens } from '@/composables/useRoleLens';
 
 export default defineComponent({
   name: 'Resume',
   components: {
     SectionHeader,
+  },
+  setup() {
+    const { activeLens, currentConfig } = useRoleLens();
+
+    const isPillarHighlighted = (pillarTitle: string) => {
+      if (activeLens.value === 'all') return false;
+      return currentConfig.value.highlightSkills.includes(pillarTitle);
+    };
+
+    return {
+      activeLens,
+      isPillarHighlighted,
+    };
   },
 });
 </script>
@@ -446,6 +468,18 @@ export default defineComponent({
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: var(--space-5);
+  transition: all var(--transition-base);
+
+  &--highlighted {
+    border-color: rgba(0, 229, 255, 0.5);
+    background: linear-gradient(145deg, rgba(0, 229, 255, 0.08) 0%, rgba(0, 13, 38, 0.6) 100%);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+    transform: translateY(-2px);
+
+    .pillar-title {
+      color: var(--color-accent);
+    }
+  }
 }
 
 .pillar-title {

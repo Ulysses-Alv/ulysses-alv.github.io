@@ -15,12 +15,11 @@
         Hey, I'm
         <span class="gradient-text hero-name">
           Ulises
-          
         </span>.
         <br class="break-sm" />
         I'm a <span class="gradient-text">VR Game Dev</span>
         <br class="break-sm" />
-        and ship <span class="gradient-text">indie games</span>.
+        and ship <span class="gradient-text">systems & tools</span>.
       </h1>
 
       <!-- Description -->
@@ -32,19 +31,19 @@
 
       <!-- CTA Buttons -->
       <div class="hero-ctas">
-        <a href="/games" class="btn-primary">
-          See my games
+        <a href="#dossier" class="btn-primary">
+          Explore by role
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow">
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </a>
-        <a href="#tools" class="btn-secondary">Tools & Apps</a>
+        <a href="/games" class="btn-secondary">Games</a>
+        <a href="#tools" class="btn-ghost">Tools & Apps</a>
         <a href="#resume" class="btn-ghost">Resume</a>
         <a href="https://github.com/Ulysses-Alv" target="_blank" rel="noopener noreferrer" class="btn-ghost">
           GitHub ↗
         </a>
       </div>
-     
     </div>
   </section>
 </template>
@@ -104,6 +103,7 @@ export default defineComponent({
 .hero-content {
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 // === Label ===
@@ -136,14 +136,6 @@ export default defineComponent({
   display: inline-block;
 }
 
-.sparkle {
-  position: absolute;
-  top: -0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
 .break-sm {
   display: none;
 
@@ -154,10 +146,10 @@ export default defineComponent({
 
 // === Description ===
 .hero-description {
-  max-width: 36rem;
+  max-width: 42rem;
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  color: rgba(244, 244, 245, 0.7);
+  color: rgba(244, 244, 245, 0.75);
   margin-bottom: var(--space-8);
 }
 
@@ -167,7 +159,6 @@ export default defineComponent({
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
-  margin-bottom: var(--space-6);
 }
 
 .cta-arrow {
@@ -176,16 +167,5 @@ export default defineComponent({
 
 .btn-primary:hover .cta-arrow {
   transform: translateX(4px);
-}
-
-// === Stats Line ===
-.hero-stats {
-  font-size: var(--text-xs);
-  color: rgba(244, 244, 245, 0.4);
-}
-
-.stats-prompt {
-  color: var(--color-accent-pink);
-  margin-right: var(--space-2);
 }
 </style>
