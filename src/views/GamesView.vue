@@ -1,16 +1,15 @@
 <template>
   <section id="games" class="games-section">
     <div class="container">
-      <SectionHeader title="games" />
+      <SectionHeader title="Shipped Games & Projects" tagline="Commercial releases, VR experiences, and gameplay systems." />
 
-      <!-- Hero -->
+      <!-- Section Intro -->
       <div class="games-hero">
-        <h1 class="hero-title font-display">
-          Games I've
-          <span class="gradient-text">worked on</span>.
-        </h1>
+        <h2 class="hero-title font-display">
+          Games I've <span class="gradient-text">Engineered & Shipped</span>.
+        </h2>
         <p class="hero-subtitle">
-          Click a title up top and watch the trailer.
+          Commercial VR titles on Meta Quest, mobile releases on Google Play, and game jam prototypes. Select a project to inspect gameplay clips, technical systems, and store links.
         </p>
       </div>
 

@@ -1,21 +1,15 @@
 <template>
-  <section id="resume" class="resume-section">
+  <section id="experience" class="resume-section">
+    <span id="resume" class="anchor-offset"></span>
     <div class="container">
-      <SectionHeader title="Resume" tagline="Professional experience, technical skills, and background." />
-
-      <!-- Bio intro -->
-      <div class="resume-intro">
-        <p class="intro-text">
-          <strong>Unity XR & Software Engineer</strong> with <strong>5 years</strong> of professional experience specializing in VR/XR development (Quest standalone optimization, OpenXR), gameplay systems architecture, real-time multiplayer, and developer tooling.
-        </p>
-      </div>
+      <SectionHeader title="Experience & Skills" tagline="Professional track record, technical skills, and background." />
 
       <!-- Download link -->
       <div class="resume-download">
         <a 
           href="https://drive.google.com/file/d/1OaSpW0gaUUPlmTFySfSt3GvJPMQqmTYL/view?usp=sharing" 
           target="_blank" 
-          rel="noopener noreferrer"
+          rel="noopener noreferrer" 
           class="btn-secondary"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -23,7 +17,7 @@
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Download PDF
+          Download PDF CV
         </a>
       </div>
 
@@ -132,94 +126,32 @@
         </div>
       </div>
 
-      <!-- Featured Developer Tooling & Ecosystem -->
-      <div class="resume-block">
-        <h2 class="block-title">Featured Tools & Ecosystem</h2>
-        <div class="featured-tools-list">
-          <div class="tool-entry">
-            <div class="tool-entry-head">
-              <a href="https://fitapp.vlys.com.ar" target="_blank" rel="noopener noreferrer" class="tool-link">
-                FitApp & FitWeb ↗
-              </a>
-              <span class="tool-badge">Android + Web Ecosystem</span>
-            </div>
-            <p class="tool-desc">
-              Local-first strength tracking ecosystem. Native Android app (Kotlin, Jetpack Compose, 100% offline) synced in real-time to a React/TS web dashboard (Firebase Auth & Firestore) with scientific 1RM analytics.
-            </p>
-          </div>
-
-          <div class="tool-entry">
-            <div class="tool-entry-head">
-              <a href="https://vlys.com.ar/log_splitter" target="_blank" rel="noopener noreferrer" class="tool-link">
-                Log Splitter ↗
-              </a>
-              <span class="tool-badge">Developer Tooling</span>
-            </div>
-            <p class="tool-desc">
-              Browser-based utility for parsing, filtering, and partitioning massive Unity player logs and build dumps without server uploads.
-            </p>
-          </div>
-
-          <div class="tool-entry">
-            <div class="tool-entry-head">
-              <a href="https://vlys.com.ar/git-branch-visualizer" target="_blank" rel="noopener noreferrer" class="tool-link">
-                Git Branch Visualizer ↗
-              </a>
-              <span class="tool-badge">Git & Productivity</span>
-            </div>
-            <p class="tool-desc">
-              Interactive visualization tool to graph, simulate, and teach complex Git branching flows, rebases, and merge histories.
-            </p>
-          </div>
-
-          <div class="tool-entry">
-            <div class="tool-entry-head">
-              <a href="https://assetstore.unity.com/packages/tools/gui/vlys-scene-notes-lite-363010" target="_blank" rel="noopener noreferrer" class="tool-link">
-                Vlys Scene Notes Lite ↗
-              </a>
-              <span class="tool-badge">Unity Asset Store</span>
-            </div>
-            <p class="tool-desc">
-              Published Unity Editor extension to attach sticky notes, spatial markers, and contextual documentation inside 3D scene hierarchies.
-            </p>
-          </div>
-        </div>
-      </div>
-
       <!-- Skills Pillars -->
       <div class="resume-block">
         <h2 class="block-title">Core Competencies & Skills</h2>
         <div class="skills-pillars-grid">
-          <div
-            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('XR & Engine Development') }]"
-          >
+          <div class="pillar-card">
             <h3 class="pillar-title">XR & Engine Development</h3>
             <p class="pillar-content">
               OpenXR, Meta SDK, XR Interaction Toolkit, URP, Shader Graph, uGUI, UI Toolkit, DOTween, Procedural Generation, Zenject (DI).
             </p>
           </div>
 
-          <div
-            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('Performance & Profiling') }]"
-          >
+          <div class="pillar-card">
             <h3 class="pillar-title">Performance & Profiling</h3>
             <p class="pillar-content">
               Quest Standalone Optimization (Stable 72 FPS), OVR Metrics Tool, Unity Profiler, Frame Debugger, Dynamic Occlusion Culling, Batching, LOD Groups, Draw Call Reduction.
             </p>
           </div>
 
-          <div
-            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('Architecture & Languages') }]"
-          >
+          <div class="pillar-card">
             <h3 class="pillar-title">Architecture & Languages</h3>
             <p class="pillar-content">
               C# (Advanced), Python, TypeScript, Kotlin, SOLID Principles, GoF Design Patterns, Clean / Hexagonal Architecture, Domain Modeling.
             </p>
           </div>
 
-          <div
-            :class="['pillar-card', { 'pillar-card--highlighted': isPillarHighlighted('Multiplayer, AI & Cloud') }]"
-          >
+          <div class="pillar-card">
             <h3 class="pillar-title">Multiplayer, AI & Cloud</h3>
             <p class="pillar-content">
               Netcode for GameObjects (NGO), Steamworks, Server-Authoritative Architecture, Real-Time LLM Pipelines (STT/TTS), Firebase Firestore, Git.
@@ -262,25 +194,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import SectionHeader from '@/components/SectionHeader.vue';
-import { useRoleLens } from '@/composables/useRoleLens';
 
 export default defineComponent({
   name: 'Resume',
   components: {
     SectionHeader,
-  },
-  setup() {
-    const { activeLens, currentConfig } = useRoleLens();
-
-    const isPillarHighlighted = (pillarTitle: string) => {
-      if (activeLens.value === 'all') return false;
-      return currentConfig.value.highlightSkills.includes(pillarTitle);
-    };
-
-    return {
-      activeLens,
-      isPillarHighlighted,
-    };
   },
 });
 </script>
@@ -399,57 +317,11 @@ export default defineComponent({
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-// === Featured Tools in Resume ===
-.featured-tools-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.tool-entry {
-  background: rgba(0, 229, 255, 0.03);
-  border: 1px solid rgba(0, 229, 255, 0.15);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-}
-
-.tool-entry-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
-  margin-bottom: var(--space-2);
-}
-
-.tool-link {
-  font-size: var(--text-lg);
-  font-weight: var(--font-semibold);
-  color: var(--color-accent);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.tool-badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-accent-pink);
-  background: rgba(255, 79, 180, 0.1);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-sm);
-}
-
-.tool-desc {
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  color: rgba(244, 244, 245, 0.7);
-  margin: 0;
+.anchor-offset {
+  display: block;
+  position: relative;
+  top: -80px;
+  visibility: hidden;
 }
 
 // === Skills Pillars ===
@@ -472,7 +344,7 @@ export default defineComponent({
 
   &--highlighted {
     border-color: rgba(0, 229, 255, 0.5);
-    background: linear-gradient(145deg, rgba(0, 229, 255, 0.08) 0%, rgba(0, 13, 38, 0.6) 100%);
+    background: linear-gradient(145deg, rgba(0, 229, 255, 0.08) 0%, rgba(0, 0, 20, 0.7) 100%);
     box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
     transform: translateY(-2px);
 

@@ -55,7 +55,11 @@ export default defineComponent({
       this.currentSlug = match ? match.slug : this.gamesData[0]?.slug || '';
     },
     selectGame(slug: string): void {
-      window.location.hash = `#${slug}`;
+      if (typeof window !== 'undefined' && window.history.replaceState) {
+        window.history.replaceState(null, '', `#${slug}`);
+      } else {
+        window.location.hash = `#${slug}`;
+      }
       this.currentSlug = slug;
     },
   },

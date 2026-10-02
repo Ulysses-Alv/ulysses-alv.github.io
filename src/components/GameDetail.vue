@@ -6,6 +6,9 @@
         v-if="game.headerType === 'local-mp4'"
         :src="game.headerSrc"
         controls
+        autoplay
+        loop
+        muted
         playsinline
         class="header-video"
       />
@@ -30,12 +33,27 @@
       />
     </div>
 
-    <!-- Header: title + status badge -->
+    <!-- Header: title + status badge + quick store links -->
     <div class="game-header">
-      <h2 class="game-title font-display">{{ game.title }}</h2>
-      <span :class="['status-badge', `status-${game.status}`]">
-        {{ statusLabel }}
-      </span>
+      <div class="game-title-group">
+        <h2 class="game-title font-display">{{ game.title }}</h2>
+        <span :class="['status-badge', `status-${game.status}`]">
+          {{ statusLabel }}
+        </span>
+      </div>
+      <div v-if="hasLinks" class="game-quick-actions">
+        <a
+          v-for="link in availableLinks"
+          :key="`${game.slug}-top-${link.label}`"
+          :href="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-quick-store"
+        >
+          <span v-if="link.icon" class="link-icon" v-html="link.icon" />
+          <span>{{ link.label }}</span>
+        </a>
+      </div>
     </div>
 
     <!-- Description -->
@@ -43,14 +61,76 @@
       {{ descriptionText }}
     </p>
 
-    <!-- Technical Info -->
+    <!-- Key Contributions / What I Engineered -->
+    <section v-if="hasKeyContributions" class="detail-section contributions-section">
+      <div class="contributions-card">
+        <h3 class="contributions-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contributions-icon">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          What I Engineered
+        </h3>
+        <ul class="contributions-list">
+          <li v-for="(item, index) in game.keyContributions" :key="`${game.slug}-contrib-${index}`" class="contrib-item">
+            <span class="contrib-bullet" aria-hidden="true">▸</span>
+            <span class="contrib-text" v-html="formatContribution(item)"></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Technical Deep Dive (Expandable) -->
+    <section v-if="hasDeepDive" class="detail-section deep-dive-section">
+      <details class="deep-dive-details">
+        <summary class="deep-dive-summary">
+          <div class="summary-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+            <span>Technical Deep Dive & Architecture</span>
+          </div>
+          <span class="summary-badge">Expand breakdown ▾</span>
+        </summary>
+        <div class="deep-dive-body">
+          <p v-if="game.deepDive?.summary" class="deep-dive-intro">
+            {{ game.deepDive.summary }}
+          </p>
+          <div class="deep-dive-grid">
+            <div
+              v-for="(section, idx) in game.deepDive?.sections"
+              :key="`${game.slug}-section-${idx}`"
+              class="deep-dive-card"
+            >
+              <h4 class="card-heading">{{ section.heading }}</h4>
+              <ul class="card-list">
+                <li v-for="(detail, dIdx) in section.details" :key="dIdx">
+                  {{ detail }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Tech Stack -->
     <section v-if="hasTechInfo" class="detail-section tech-info-section">
-      <h3 class="section-label section-header section-header--sm">Technical Info</h3>
-      <ul class="tech-info-list">
-        <li v-for="(info, index) in game.techInfo" :key="`${game.slug}-tech-${index}`">
+      <h3 class="section-label section-header section-header--sm">Tech Stack</h3>
+      <div class="tech-pills-row">
+        <span v-for="(info, index) in game.techInfo" :key="`${game.slug}-tech-${index}`" class="tech-stack-pill">
           {{ info }}
-        </li>
-      </ul>
+        </span>
+      </div>
     </section>
 
     <!-- Trailer -->
@@ -153,7 +233,7 @@ export default defineComponent({
   computed: {
     coverImageSrc(): string {
       if (!this.game.coverImage || this.coverFallbackActive) {
-        return 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="100%25" height="100%25" fill="%23001F5C"/><text x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%2300E5FF" font-family="sans-serif" font-size="24">No cover image</text></svg>';
+        return 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="100%25" height="100%25" fill="%23001046"/><text x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%2300E5FF" font-family="sans-serif" font-size="24">No cover image</text></svg>';
       }
       return this.game.coverImage;
     },
@@ -177,6 +257,12 @@ export default defineComponent({
     },
     hasLinks(): boolean {
       return this.availableLinks.length > 0;
+    },
+    hasKeyContributions(): boolean {
+      return Array.isArray(this.game.keyContributions) && this.game.keyContributions.length > 0;
+    },
+    hasDeepDive(): boolean {
+      return Boolean(this.game.deepDive && this.game.deepDive.sections && this.game.deepDive.sections.length > 0);
     },
     hasTechInfo(): boolean {
       return Array.isArray(this.game.techInfo) && this.game.techInfo.length > 0;
@@ -222,6 +308,15 @@ export default defineComponent({
     },
   },
   methods: {
+    formatContribution(text: string): string {
+      const separatorIndex = text.indexOf(': ');
+      if (separatorIndex !== -1) {
+        const title = text.slice(0, separatorIndex);
+        const desc = text.slice(separatorIndex + 2);
+        return `<strong class="contrib-keyword">${title}:</strong> ${desc}`;
+      }
+      return text;
+    },
     onCoverError(): void {
       this.coverFallbackActive = true;
     },
@@ -295,7 +390,50 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.game-title-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-3);
+}
+
+.game-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.btn-quick-store {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: var(--radius-md);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: rgba(0, 229, 255, 0.25);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.2);
+  }
+
+  .link-icon {
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 .game-title {
@@ -352,18 +490,231 @@ export default defineComponent({
   white-space: pre-line;
 }
 
-.tech-info-list {
+// === What I Engineered (Key Contributions) ===
+.contributions-section {
+  margin-top: var(--space-2);
+}
+
+.contributions-card {
+  background: linear-gradient(145deg, rgba(0, 229, 255, 0.05) 0%, rgba(0, 0, 20, 0.6) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-pink) 100%);
+  }
+}
+
+.contributions-header {
+  margin: 0 0 var(--space-4) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-white);
+  letter-spacing: -0.01em;
+}
+
+.contributions-icon {
+  color: var(--color-accent);
+}
+
+.contributions-list {
   margin: 0;
-  padding: 0 0 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contrib-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: rgba(244, 244, 245, 0.88);
+}
+
+.contrib-bullet {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+:deep(.contrib-keyword) {
+  color: var(--color-accent);
+  font-weight: var(--font-bold);
+}
+
+// === Technical Deep Dive (Expandable) ===
+.deep-dive-section {
+  margin-top: var(--space-2);
+}
+
+.deep-dive-details {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all var(--transition-base);
+  overflow: hidden;
+
+  &:hover {
+    border-color: rgba(0, 229, 255, 0.3);
+  }
+
+  &[open] {
+    border-color: rgba(0, 229, 255, 0.35);
+    background: rgba(0, 0, 20, 0.8);
+
+    .deep-dive-summary {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 229, 255, 0.05);
+
+      .summary-badge {
+        background: rgba(0, 229, 255, 0.2);
+        color: var(--color-accent);
+      }
+    }
+  }
+}
+
+.deep-dive-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-white);
+  transition: background var(--transition-fast);
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.summary-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-primary);
+
+  svg {
+    color: var(--color-accent-pink);
+    flex-shrink: 0;
+  }
+}
+
+.summary-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-3);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.deep-dive-body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.deep-dive-intro {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: rgba(244, 244, 245, 0.7);
+  font-style: italic;
+}
+
+.deep-dive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.deep-dive-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.card-heading {
+  margin: 0 0 var(--space-2) 0;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent);
+}
+
+.card-list {
+  margin: 0;
+  padding-left: var(--space-4);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 
   li {
-    font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: rgba(244, 244, 245, 0.7);
     line-height: var(--leading-relaxed);
+    color: rgba(244, 244, 245, 0.8);
+  }
+}
+
+// === Tech Stack Pills ===
+.tech-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tech-stack-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1-5) var(--space-3);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: rgba(244, 244, 245, 0.75);
+  letter-spacing: 0.02em;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: rgba(0, 229, 255, 0.3);
+    color: var(--color-white);
+    background: rgba(0, 229, 255, 0.05);
   }
 }
 

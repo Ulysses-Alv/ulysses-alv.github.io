@@ -19,10 +19,9 @@
         <div class="footer-links">
           <h4 class="footer-heading">Site</h4>
           <ul class="link-list">
-            <li><a href="#about">About</a></li>
-            <li><a href="/games">Games</a></li>
+            <li><a href="#games">Games</a></li>
             <li><a href="#tools">Tools</a></li>
-            <li><a href="#resume">Resume</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="mailto:ulises.j.alvarenga@gmail.com">Contact</a></li>
           </ul>
         </div>
@@ -95,7 +94,7 @@ export default defineComponent({
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(0, 13, 38, 0.8)
+    rgba(0, 0, 20, 0.8)
   );
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }

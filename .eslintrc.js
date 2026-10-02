@@ -15,7 +15,10 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    "vue/no-v-for-template-key" : "off" // disabling vue2 rule
+    "vue/no-v-for-template-key": "off", // disabling vue2 rule
+    "vue/multi-word-component-names": "off",
+    "vue/no-reserved-component-names": "off",
+    "@typescript-eslint/no-explicit-any": "warn"
   },
   settings: {
     "import/resolver": {

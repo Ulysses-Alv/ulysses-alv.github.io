@@ -4,8 +4,7 @@
 
     <main class="main-content">
       <Hero />
-      <RoleDossierSection />
-      <About />
+      <GamesView />
       <ToolsSection />
       <Resume />
     </main>
@@ -18,8 +17,7 @@
 import { defineComponent } from 'vue';
 import Header from '../components/Header.vue';
 import Hero from '../components/Hero.vue';
-import RoleDossierSection from '../components/RoleDossierSection.vue';
-import About from '../views/About.vue';
+import GamesView from '../views/GamesView.vue';
 import ToolsSection from '../components/ToolsSection.vue';
 import Resume from '../views/Resume.vue';
 import Footer from '../components/Footer.vue';
@@ -29,8 +27,7 @@ export default defineComponent({
   components: {
     Header,
     Hero,
-    RoleDossierSection,
-    About,
+    GamesView,
     ToolsSection,
     Resume,
     Footer,

@@ -1,14 +1,13 @@
 import { createRouter as _createRouter, createWebHistory } from 'vue-router'
 
 const HomeLayout = () => import('../layouts/HomeLayout.vue')
-const GamesLayout = () => import('../layouts/GamesLayout.vue')
 const E404View = () => import('../views/404.vue')
 
 export function createRouter(){
   return _createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
-      // Home page
+      // Home page (Single-Page Showcase)
       {
         path: '/',
         name: 'Home',
@@ -19,11 +18,10 @@ export function createRouter(){
         redirect: '/'
       },
 
-      // Games page
+      // Games page redirect to single-page anchor
       {
         path: '/games',
-        name: 'Games',
-        component: GamesLayout
+        redirect: '/#games'
       },
 
       // Catch-all for 404
@@ -32,6 +30,18 @@ export function createRouter(){
         name: 'NotFound',
         component: E404View
       }
-    ]
+    ],
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition;
+      }
+      if (to.hash) {
+        return {
+          el: to.hash,
+          behavior: 'smooth'
+        };
+      }
+      return { top: 0, behavior: 'smooth' };
+    }
   })
 }

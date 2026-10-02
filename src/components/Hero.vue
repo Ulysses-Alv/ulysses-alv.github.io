@@ -2,12 +2,12 @@
   <section ref="heroRef" class="hero">
     <SpaceBackground v-if="isDesktop" :hero-ref="heroRef" />
     <div class="container hero-content">
-      <!-- WIP Label -->
+      <!-- Status Badge -->
       <span class="hero-label">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="#FF4FB4" aria-hidden="true" class="animate-twinkle" style="transform: rotate(20deg)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="#00E5FF" aria-hidden="true" class="animate-twinkle" style="transform: rotate(20deg)">
           <path d="M12 0 C12 7, 17 12, 24 12 C17 12, 12 17, 12 24 C12 17, 7 12, 0 12 C7 12, 12 7, 12 0 Z"></path>
         </svg>
-        super secret wip
+        Unity XR & Gameplay Engineer • Shipped Titles on Meta Quest & Google Play
       </span>
 
       <!-- Main Greeting -->
@@ -17,29 +17,34 @@
           Ulises
         </span>.
         <br class="break-sm" />
-        I'm a <span class="gradient-text">VR Game Dev</span>
+        I engineer <span class="gradient-text">VR games</span>
         <br class="break-sm" />
-        and ship <span class="gradient-text">systems & tools</span>.
+        & ship <span class="gradient-text">gameplay systems</span>.
       </h1>
 
       <!-- Description -->
       <p class="hero-description">
-        Unity XR & Software Engineer with 5 years building gameplay systems, real-time
-        multiplayer, AI NPC pipelines, and developer tooling across VR/XR, PC, and mobile platforms.
-        I own full feature cycles — from architecture to ship.
+        5+ years shipping games across VR/XR (Meta Quest), mobile, and PC. Specialized in hardware-constrained performance profiling (stable 72 FPS on Quest), server-authoritative multiplayer, real-time LLM voice pipelines, and decoupled gameplay architecture.
       </p>
 
       <!-- CTA Buttons -->
       <div class="hero-ctas">
-        <a href="#dossier" class="btn-primary">
-          Explore by role
+        <a href="#games" class="btn-primary">
+          View Shipped Games
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow">
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </a>
-        <a href="/games" class="btn-secondary">Games</a>
+        <a 
+          href="https://drive.google.com/file/d/1OaSpW0gaUUPlmTFySfSt3GvJPMQqmTYL/view?usp=sharing" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-secondary"
+        >
+          Download CV (PDF)
+        </a>
         <a href="#tools" class="btn-ghost">Tools & Apps</a>
-        <a href="#resume" class="btn-ghost">Resume</a>
+        <a href="#experience" class="btn-ghost">Experience</a>
         <a href="https://github.com/Ulysses-Alv" target="_blank" rel="noopener noreferrer" class="btn-ghost">
           GitHub ↗
         </a>

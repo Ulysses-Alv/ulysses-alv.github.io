@@ -56,7 +56,7 @@ export default defineComponent({
   top: 0;
   z-index: var(--z-sticky, 30);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(0, 13, 38, 0.6);
+  background: rgba(0, 0, 20, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
@@ -216,7 +216,7 @@ export default defineComponent({
   right: 0;
   flex-direction: column;
   padding: 0.5rem;
-  background: rgba(0, 13, 38, 0.95);
+  background: rgba(0, 0, 20, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 

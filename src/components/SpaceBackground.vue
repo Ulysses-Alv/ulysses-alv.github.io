@@ -201,12 +201,12 @@ export default defineComponent({
 
 .space-background::before {
   top: 0;
-  background: linear-gradient(to bottom, rgba(0, 13, 38, 0.95) 0%, rgba(0, 13, 38, 0.7) 40%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 20, 0.95) 0%, rgba(0, 0, 20, 0.7) 40%, transparent 100%);
 }
 
 .space-background::after {
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 13, 38, 0.95) 0%, rgba(0, 13, 38, 0.7) 40%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 20, 0.95) 0%, rgba(0, 0, 20, 0.7) 40%, transparent 100%);
 }
 
 .space-layer {
@@ -216,7 +216,7 @@ export default defineComponent({
 }
 
 .space-layer--0 {
-  background: radial-gradient(ellipse at 50% 30%, #001F5C 0%, #000D26 40%, #000000 100%);
+  background: radial-gradient(ellipse at 50% 30%, var(--color-bg-deep) 0%, var(--color-bg) 40%, #000000 100%);
 }
 
 

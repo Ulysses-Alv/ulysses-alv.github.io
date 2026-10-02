@@ -11,10 +11,9 @@
 
       <!-- Desktop Nav -->
       <nav class="nav-desktop" aria-label="Primary">
-        <a href="#about" class="nav-link">About</a>
-        <router-link to="/games" class="nav-link">Games</router-link>
+        <a href="#games" class="nav-link">Games</a>
         <a href="#tools" class="nav-link">Tools</a>
-        <a href="#resume" class="nav-link">Resume</a>
+        <a href="#experience" class="nav-link">Experience</a>
         <a href="mailto:ulises.j.alvarenga@gmail.com" target="_blank" rel="noopener noreferrer"
           class="nav-link nav-link--cta">
           Get in touch
@@ -29,10 +28,9 @@
 
       <!-- Mobile Nav Drawer -->
       <nav class="nav-mobile" aria-label="Mobile navigation">
-        <a href="#about" class="nav-link">About</a>
-        <router-link to="/games" class="nav-link">Games</router-link>
+        <a href="#games" class="nav-link">Games</a>
         <a href="#tools" class="nav-link">Tools</a>
-        <a href="#resume" class="nav-link">Resume</a>
+        <a href="#experience" class="nav-link">Experience</a>
         <a href="mailto:ulises.j.alvarenga@gmail.com" class="nav-link">Get in touch</a>
       </nav>
     </div>
@@ -56,7 +54,7 @@ export default defineComponent({
   top: 0;
   z-index: var(--z-sticky);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(0, 13, 38, 0.6);
+  background: rgba(0, 0, 20, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -226,7 +224,7 @@ export default defineComponent({
   right: 0;
   flex-direction: column;
   padding: var(--space-4) var(--space-6);
-  background: rgba(0, 13, 38, 0.95);
+  background: rgba(0, 0, 20, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);

@@ -170,7 +170,7 @@ export default defineComponent({
   position: sticky;
   top: 4rem; // 64px below header
   z-index: 25;
-  background: rgba(0, 13, 38, 0.88);
+  background: rgba(0, 0, 20, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(0, 229, 255, 0.1);
@@ -246,8 +246,8 @@ export default defineComponent({
 .dossier-banner {
   background: linear-gradient(
     145deg,
-    rgba(0, 26, 64, 0.7) 0%,
-    rgba(0, 13, 38, 0.9) 100%
+    rgba(0, 16, 70, 0.7) 0%,
+    rgba(0, 0, 20, 0.9) 100%
   );
   border: 1px solid rgba(0, 229, 255, 0.25);
   border-radius: var(--radius-xl);
@@ -342,7 +342,7 @@ export default defineComponent({
 }
 
 .metric-card {
-  background: rgba(0, 13, 38, 0.6);
+  background: rgba(0, 0, 20, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: var(--space-4);
