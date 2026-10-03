@@ -1,54 +1,24 @@
 <template>
-  <section ref="heroRef" class="hero">
+  <section id="home" ref="heroRef" class="hero">
     <SpaceBackground v-if="isDesktop" :hero-ref="heroRef" />
     <div class="container hero-content">
-      <!-- Status Badge -->
-      <span class="hero-label">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="#00E5FF" aria-hidden="true" class="animate-twinkle" style="transform: rotate(20deg)">
-          <path d="M12 0 C12 7, 17 12, 24 12 C17 12, 12 17, 12 24 C12 17, 7 12, 0 12 C7 12, 12 7, 12 0 Z"></path>
-        </svg>
-        Unity XR & Gameplay Engineer • Shipped Titles on Meta Quest & Google Play
-      </span>
-
-      <!-- Main Greeting -->
-      <h1 class="hero-greeting">
-        Hey, I'm
-        <span class="gradient-text hero-name">
-          Ulises
-        </span>.
-        <br class="break-sm" />
-        I engineer <span class="gradient-text">VR games</span>
-        <br class="break-sm" />
-        & ship <span class="gradient-text">gameplay systems</span>.
-      </h1>
-
-      <!-- Description -->
-      <p class="hero-description">
-        5+ years shipping games across VR/XR (Meta Quest), mobile, and PC. Specialized in hardware-constrained performance profiling (stable 72 FPS on Quest), server-authoritative multiplayer, real-time LLM voice pipelines, and decoupled gameplay architecture.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="hero-ctas">
-        <a href="#games" class="btn-primary">
-          View Shipped Games
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow">
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </a>
-        <a 
-          href="https://drive.google.com/file/d/1OaSpW0gaUUPlmTFySfSt3GvJPMQqmTYL/view?usp=sharing" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn-secondary"
-        >
-          Download CV (PDF)
-        </a>
-        <a href="#tools" class="btn-ghost">Tools & Apps</a>
-        <a href="#experience" class="btn-ghost">Experience</a>
-        <a href="https://github.com/Ulysses-Alv" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-          GitHub ↗
-        </a>
+      <div class="hero-copy">
+        <p class="hero-label">Gameplay · VR / XR · Developer tools</p>
+        <h1 class="hero-greeting"><span class="hero-name">Ulises</span> Alvarenga</h1>
+        <p class="hero-role">Unity XR &amp; Gameplay Engineer</p>
+        <p class="hero-description">
+          5+ years shipping VR/XR, mobile and PC games.<br />
+          Gameplay architecture, Quest optimization, multiplayer &amp; AI voice pipelines.
+        </p>
+        <p class="hero-evidence">Meta Quest &amp; Google Play · Quest optimization: 72 FPS</p>
+        <div class="hero-ctas">
+          <a href="#games" class="btn-primary">View Shipped Games <span aria-hidden="true">→</span></a>
+          <a href="https://drive.google.com/file/d/1OaSpW0gaUUPlmTFySfSt3GvJPMQqmTYL/view?usp=sharing"
+            target="_blank" rel="noopener noreferrer" class="btn-secondary">Download CV (PDF)</a>
+        </div>
+        <a href="https://github.com/Ulysses-Alv" target="_blank" rel="noopener noreferrer" class="hero-github">GitHub ↗</a>
       </div>
+      <p v-if="isDesktop" class="game-hint">Optional: explore with WASD</p>
     </div>
   </section>
 </template>
@@ -96,81 +66,25 @@ export default defineComponent({
 <style scoped lang="less">
 @import '../css/variables.less';
 @import '../css/design-system.less';
-
-.hero {
-  position: relative;
-  min-height: calc(100vh - 4rem);
-  display: flex;
-  align-items: center;
-  padding: var(--space-16) 0;
+.hero { position: relative; min-height: calc(100svh - 4rem); display: flex; align-items: center; padding: var(--space-16) 0; }
+.hero-content { position: relative; z-index: 1; width: 100%; }
+.hero-copy { max-width: 52rem; }
+.hero-label { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-accent); text-transform: uppercase; letter-spacing: .08em; margin: 0 0 var(--space-6); }
+.hero-greeting { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -.035em; color: var(--color-white); margin: 0 0 var(--space-3); }
+.hero-name { color: var(--color-accent); }
+.hero-role { font-family: var(--font-display); font-size: clamp(1.375rem, 2.6vw, 2.25rem); line-height: 1.25; font-weight: 600; color: var(--color-white); margin: 0 0 var(--space-8); }
+.hero-description { font-size: var(--text-lg); line-height: 1.7; color: var(--color-text-secondary); margin: 0 0 var(--space-5); }
+.hero-evidence { font-size: var(--text-base); line-height: 1.7; color: var(--color-text-secondary); margin: 0 0 var(--space-8); }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.hero-github { display: inline-block; margin-top: var(--space-5); color: var(--color-accent); text-underline-offset: 4px; }
+.game-hint { position: absolute; right: var(--space-6); top: calc(60% + 150px); width: 210px; text-align: center; font-size: var(--text-xs); color: var(--color-text-secondary); }
+.hero :deep(.space-layer--0) { background: radial-gradient(ellipse at 65% 40%, var(--color-bg-deep), var(--color-bg) 75%); }
+.hero :deep(.space-background::before), .hero :deep(.space-background::after) { background: none; }
+.hero :deep(.space-layer--1) { opacity: .3; }
+@media (min-width: 1024px) { .hero-copy { max-width: 73%; } }
+@media (max-width: 1023px) {
+  .hero :deep(.space-background), .game-hint { display: none; }
+  .hero { min-height: auto; padding: var(--space-20) 0; }
 }
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-
-// === Label ===
-.hero-label {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-accent-pink);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: var(--space-5);
-}
-
-// === Greeting ===
-.hero-greeting {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  font-weight: var(--font-bold);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--color-white);
-  margin-bottom: var(--space-5);
-  position: relative;
-}
-
-.hero-name {
-  position: relative;
-  display: inline-block;
-}
-
-.break-sm {
-  display: none;
-
-  @media (min-width: 640px) {
-    display: block;
-  }
-}
-
-// === Description ===
-.hero-description {
-  max-width: 42rem;
-  font-size: var(--text-lg);
-  line-height: var(--leading-relaxed);
-  color: rgba(244, 244, 245, 0.75);
-  margin-bottom: var(--space-8);
-}
-
-// === CTAs ===
-.hero-ctas {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.cta-arrow {
-  transition: transform var(--transition-fast);
-}
-
-.btn-primary:hover .cta-arrow {
-  transform: translateX(4px);
-}
+@media (max-width: 480px) { .hero-ctas { flex-direction: column; align-items: flex-start; } }
 </style>

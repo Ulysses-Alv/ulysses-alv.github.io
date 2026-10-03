@@ -2,6 +2,7 @@
   <section id="experience" class="resume-section">
     <span id="resume" class="anchor-offset"></span>
     <div class="container">
+      <div class="resume-heading">
       <SectionHeader title="Experience & Skills" tagline="Professional track record, technical skills, and background." />
 
       <!-- Download link -->
@@ -21,6 +22,8 @@
         </a>
       </div>
 
+      </div>
+      <div class="resume-overview">
       <!-- Work Experience -->
       <div class="resume-block">
         <h2 class="block-title">Work Experience</h2>
@@ -36,6 +39,13 @@
           </div>
 
           <ul class="job-bullets">
+            <li>Real-time AI NPC voice pipeline: STT → LLM → TTS.</li>
+            <li>Quest optimization for stable 72 FPS.</li>
+            <li>Abduct &amp; Destroy, AstroPark and server-authoritative VR multiplayer.</li>
+          </ul>
+          <details class="job-details">
+            <summary>Technical contributions</summary>
+<ul class="job-bullets">
             <li>
               <strong>AI NPC Voice Architecture:</strong> Designed and deployed real-time VR NPC pipeline (STT → Prompt Engineering & Token Management → LLM Processing → TTS → VR Character reactions) with latency-aware retry and fallback systems.
             </li>
@@ -52,6 +62,7 @@
               <strong>Multiplayer VR:</strong> Implemented LAN multiplayer using Netcode for GameObjects (NGO) with server-authoritative state synchronization.
             </li>
           </ul>
+          </details>
 
           <div class="job-tech">
             <span class="pill-accent">VR / XR</span>
@@ -77,6 +88,12 @@
           </div>
 
           <ul class="job-bullets">
+            <li>Server-authoritative multiplayer with NGO and Steamworks.</li>
+            <li>Architecture refactoring, profiling and technical consulting.</li>
+          </ul>
+          <details class="job-details">
+            <summary>Technical contributions</summary>
+<ul class="job-bullets">
             <li>
               <strong>Multiplayer Architecture:</strong> Developed server-authoritative multiplayer prototypes using NGO and Steamworks (state synchronization, network ownership, replication).
             </li>
@@ -84,6 +101,7 @@
               <strong>Technical Consulting:</strong> Delivered client solutions across VR, mobile, and 3D games, focusing on architecture refactoring, performance profiling, and system decoupling.
             </li>
           </ul>
+          </details>
 
           <div class="job-tech">
             <span class="pill-accent">Unity</span>
@@ -107,6 +125,12 @@
           </div>
 
           <ul class="job-bullets">
+            <li>Room Makers: systems refactoring with SOLID and GoF patterns.</li>
+            <li>Agile collaboration with Jira, Trello and Git.</li>
+          </ul>
+          <details class="job-details">
+            <summary>Technical contributions</summary>
+<ul class="job-bullets">
             <li>
               <strong>Room Makers (Google Play):</strong> Refactored core systems and decoupled legacy code applying SOLID principles and GoF design patterns (Factory, Observer, Singleton, Command).
             </li>
@@ -114,6 +138,7 @@
               Collaborated in an Agile Scrum environment with Jira, Trello, and Git version control.
             </li>
           </ul>
+          </details>
 
           <div class="job-tech">
             <span class="pill-accent">Unity</span>
@@ -160,9 +185,12 @@
         </div>
       </div>
 
+      </div>
+
       <!-- Education & Courses -->
       <div class="resume-block">
         <h2 class="block-title">Education & Certifications</h2>
+        <div class="education-grid">
         <div class="edu-item">
           <h3 class="edu-title">Universidad Nacional de Quilmes</h3>
           <p class="edu-degree">Licenciatura en Informática / Bachelor's in Computer Science <em>(2022 - Present, in progress)</em></p>
@@ -170,6 +198,7 @@
         <div class="edu-item">
           <h3 class="edu-title">Design Patterns for Videogames — Daniel Parra</h3>
           <p class="edu-degree">Specialization in SOLID, GoF Design Patterns, and Scalable Unity Architecture.</p>
+        </div>
         </div>
       </div>
 
@@ -186,6 +215,10 @@
             <p class="lang-level">B2 Certified (Professional Working Proficiency)</p>
           </div>
         </div>
+      </div>
+      <div class="contact-invitation">
+        <h2>Let's build something together.</h2>
+        <a href="mailto:ulises.j.alvarenga@gmail.com" class="btn-primary">Get in touch ↗</a>
       </div>
     </div>
   </section>
@@ -343,9 +376,9 @@ export default defineComponent({
   transition: all var(--transition-base);
 
   &--highlighted {
-    border-color: rgba(0, 229, 255, 0.5);
-    background: linear-gradient(145deg, rgba(0, 229, 255, 0.08) 0%, rgba(0, 0, 20, 0.7) 100%);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+    border-color: rgba(var(--color-accent-rgb), 0.5);
+    background: linear-gradient(145deg, rgba(var(--color-accent-rgb), 0.08) 0%, rgba(17, 27, 45, 0.7) 100%);
+    box-shadow: 0 0 20px rgba(var(--color-accent-rgb), 0.15);
     transform: translateY(-2px);
 
     .pillar-title {
@@ -415,4 +448,30 @@ export default defineComponent({
   font-size: var(--text-sm);
   color: rgba(244, 244, 245, 0.65);
 }
+
+.resume-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-6); }
+.resume-heading :deep(.section-header-wrapper) { flex: 1; margin-bottom: 0; }
+.resume-heading .resume-download { margin: 0; flex-shrink: 0; }
+.resume-overview { display: grid; gap: var(--space-8); margin-top: var(--space-8); }
+.resume-overview > * { min-width: 0; }
+.job { background: var(--color-surface); border-color: var(--color-border); margin-bottom: var(--space-5); }
+.job-bullets { color: var(--color-text-secondary); font-size: var(--text-sm); }
+.job-tech { gap: var(--space-1); }
+.job-tech .pill-accent { background: rgba(140, 175, 241, .08); color: var(--color-text-secondary); border-color: var(--color-border); }
+.job-details summary { color: var(--color-accent); font-size: var(--text-sm); cursor: pointer; }
+.job-details[open] .job-bullets { margin-top: var(--space-4); }
+.skills-pillars-grid { grid-template-columns: 1fr; gap: 0; }
+.pillar-card { padding: var(--space-5) 0; border: 0; border-bottom: 1px solid var(--color-border); border-radius: 0; background: transparent; }
+.pillar-title { color: var(--color-accent); }
+.pillar-content, .edu-degree, .lang-level { color: var(--color-text-secondary); font-size: var(--text-base); }
+.education-grid { display: grid; gap: var(--space-6); }
+.contact-invitation { border-top: 1px solid var(--color-border); padding-top: var(--space-8); }
+.contact-invitation h2 { font-family: var(--font-display); font-size: var(--text-2xl); margin: 0 0 var(--space-5); }
+@media (min-width: 1024px) {
+  .resume-overview { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  .resume-overview > .resume-block + .resume-block { border-left: 1px solid var(--color-border); padding-left: var(--space-6); }
+  .education-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 767px) { .resume-heading { flex-direction: column; } }
+
 </style>

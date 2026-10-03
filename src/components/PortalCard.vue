@@ -1,7 +1,5 @@
 <template>
-  <div class="portal-card card-glow" :style="accentStyle">
-    <!-- Decorative orb -->
-    <span class="card-orb" aria-hidden="true"></span>
+  <div class="portal-card">
 
     <!-- Content -->
     <div class="card-content">
@@ -54,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, type PropType } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 
 export default defineComponent({
   name: 'PortalCard',
@@ -81,7 +79,7 @@ export default defineComponent({
     },
     accentColor: {
       type: String,
-      default: '#00E5FF',
+      default: '#8CAFF1',
     },
     techStack: {
       type: Array as PropType<string[]>,
@@ -92,12 +90,7 @@ export default defineComponent({
       default: '',
     },
   },
-  setup(props) {
-    const accentStyle = computed(() => ({
-      '--card-accent': props.accentColor,
-    }));
-    return { accentStyle };
-  },
+
 });
 </script>
 
@@ -111,35 +104,13 @@ export default defineComponent({
   position: relative;
   overflow: hidden;
   background: var(--color-surface);
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base),
     border-color var(--transition-base);
-
-  // Gradient orb — hidden by default
-  .card-orb {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-      circle,
-      rgba(0, 229, 255, 0.3) 0%,
-      transparent 70%
-    );
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition:
-      transform var(--transition-slow),
-      opacity var(--transition-slow);
-    pointer-events: none;
-    z-index: 0;
-    border-radius: 50%;
-  }
 
   .card-content {
     position: relative;
@@ -151,13 +122,10 @@ export default defineComponent({
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(0, 229, 255, 0.4);
+    border-color: rgba(var(--color-accent-rgb), 0.4);
     box-shadow: var(--glow-accent);
 
-    .card-orb {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.25;
-    }
+
 
     .explore-arrow {
       transform: translateX(3px) translateY(-1px);
@@ -231,13 +199,13 @@ export default defineComponent({
   transition: all var(--transition-fast);
 
   &--primary {
-    background: rgba(0, 229, 255, 0.12);
-    color: var(--color-accent);
-    border: 1px solid rgba(0, 229, 255, 0.3);
+    background: var(--color-button);
+    color: var(--color-white);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.3);
 
     &:hover {
-      background: var(--color-accent);
-      color: var(--color-bg);
+      background: var(--color-button-hover);
+      color: var(--color-white);
       border-color: var(--color-accent);
     }
   }
@@ -258,4 +226,12 @@ export default defineComponent({
 .explore-arrow {
   transition: transform var(--transition-fast);
 }
+
+.portal-card { border-color: var(--color-border); }
+.portal-card:hover { transform: none; box-shadow: var(--shadow-sm); }
+.card-header { flex-wrap: wrap; align-items: center; }
+.card-description { color: var(--color-text-secondary); font-size: var(--text-base); }
+.card-title { font-size: var(--text-2xl); }
+.pill-accent { color: var(--color-text-secondary); background: rgba(140, 175, 241, .08); border-color: var(--color-border); }
+
 </style>

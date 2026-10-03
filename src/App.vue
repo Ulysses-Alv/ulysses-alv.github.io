@@ -24,7 +24,7 @@ body::before {
     ellipse at top,
     var(--color-bg-deep) 0%,
     var(--color-bg) 50%,
-    #000000 100%
+    var(--color-bg) 100%
   );
   pointer-events: none;
 }
@@ -32,6 +32,7 @@ body::before {
 // Smooth scrolling
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 html, body {
@@ -49,4 +50,5 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   line-height: var(--leading-normal);
 }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>

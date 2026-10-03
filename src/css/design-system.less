@@ -4,10 +4,7 @@
 // === Gradient Text ===
 // Cyan-to-pink gradient for headings and emphasis
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-pink) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent);
 }
 
 // === Button Styles ===
@@ -19,7 +16,7 @@
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-pink) 100%);
+  background: var(--color-button);
   color: var(--color-white);
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -28,12 +25,12 @@
   border-radius: var(--radius-md);
   cursor: pointer;
   text-decoration: none;
-  transition: transform var(--transition-fast), box-shadow var(--transition-base);
-  box-shadow: var(--glow-accent);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--glow-accent-lg);
+    background: var(--color-button-hover);
   }
 
   &:active {
@@ -53,7 +50,7 @@
   font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
-  border: 2px solid var(--color-accent);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   cursor: pointer;
   text-decoration: none;
@@ -61,8 +58,8 @@
 
   &:hover {
     transform: translateY(-2px);
-    background: rgba(0, 229, 255, 0.1);
-    box-shadow: var(--glow-accent);
+    background: rgba(var(--color-accent-rgb), 0.1);
+    box-shadow: var(--shadow-sm);
   }
 
   &:active {
@@ -90,7 +87,7 @@
 
   &:hover {
     color: var(--color-accent-dim);
-    text-shadow: 0 0 8px var(--color-accent-glow);
+    text-decoration: underline;
   }
 }
 
@@ -100,26 +97,10 @@
   position: relative;
   overflow: hidden;
   background: var(--color-surface);
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-
-  // Gradient orb — hidden by default
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition: transform var(--transition-slow), opacity var(--transition-slow);
-    pointer-events: none;
-    z-index: 0;
-  }
 
   // Content wrapper — keeps text above orb
   > * {
@@ -129,13 +110,10 @@
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(0, 229, 255, 0.4);
-    box-shadow: var(--glow-accent);
+    border-color: rgba(var(--color-accent-rgb), 0.4);
+    box-shadow: var(--shadow-sm);
 
-    &::before {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.3;
-    }
+
   }
 }
 
@@ -173,13 +151,13 @@
   display: inline-flex;
   align-items: center;
   padding: var(--space-1) var(--space-3);
-  background: rgba(0, 229, 255, 0.15);
+  background: rgba(var(--color-accent-rgb), 0.15);
   color: var(--color-accent);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: var(--font-medium);
   border-radius: var(--radius-full);
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -265,7 +243,7 @@
 // Container
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1248px;
   margin: 0 auto;
   padding: 0 var(--space-6);
 }
@@ -273,4 +251,14 @@
 // === Display Font ===
 .font-display {
   font-family: var(--font-display);
+}
+// Shared readable defaults and keyboard focus.
+*, *::before, *::after { box-sizing: border-box; }
+a, button, summary {
+  &:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+}
+.container { min-width: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-twinkle, .animate-float-slow { animation: none; }
+  .btn-primary, .btn-secondary, .card-glow, .btn-ghost { transition: none; }
 }

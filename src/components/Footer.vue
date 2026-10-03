@@ -11,7 +11,7 @@
             <span class="logo-name">Ulises</span>
           </a>
           <p class="footer-bio">
-            Unity XR & Software Engineer with 5 years building gameplay systems, VR/XR experiences, AI pipelines, and developer tooling.
+            Unity XR & Software Engineer. Gameplay, VR/XR and developer tools.
           </p>
         </div>
 
@@ -89,12 +89,12 @@ export default defineComponent({
 @import '../css/design-system.less';
 
 .site-footer {
-  margin-top: var(--space-24);
+  margin-top: var(--space-8);
   padding: var(--space-16) 0 var(--space-8);
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(0, 0, 20, 0.8)
+    rgba(17, 27, 45, 0.8)
   );
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -139,7 +139,7 @@ export default defineComponent({
   }
 
   .footer-logo:hover & {
-    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.4), var(--glow-accent);
+    box-shadow: 0 0 0 1px rgba(var(--color-accent-rgb), 0.4), var(--glow-accent);
   }
 }
 
@@ -154,7 +154,7 @@ export default defineComponent({
 .footer-bio {
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
-  color: rgba(244, 244, 245, 0.5);
+  color: var(--color-text-secondary);
 }
 
 // === Links Column ===
@@ -164,7 +164,7 @@ export default defineComponent({
   font-weight: var(--font-semibold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(244, 244, 245, 0.5);
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
 }
 
@@ -178,7 +178,7 @@ export default defineComponent({
 
   a {
     font-size: var(--text-sm);
-    color: rgba(244, 244, 245, 0.6);
+    color: var(--color-text-secondary);
     text-decoration: none;
     transition: color var(--transition-fast);
 
@@ -199,7 +199,7 @@ export default defineComponent({
 
   a {
     font-size: var(--text-sm);
-    color: rgba(244, 244, 245, 0.6);
+    color: var(--color-text-secondary);
     text-decoration: none;
     transition: color var(--transition-fast);
 
@@ -226,7 +226,7 @@ export default defineComponent({
 
 .copyright {
   font-size: var(--text-xs);
-  color: rgba(244, 244, 245, 0.4);
+  color: var(--color-text-secondary);
 }
 
 .legal-links {
@@ -235,7 +235,7 @@ export default defineComponent({
 
   a {
     font-size: var(--text-xs);
-    color: rgba(244, 244, 245, 0.4);
+    color: var(--color-text-secondary);
     text-decoration: none;
     transition: color var(--transition-fast);
 

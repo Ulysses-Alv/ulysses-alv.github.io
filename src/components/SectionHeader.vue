@@ -1,9 +1,9 @@
 <template>
   <div class="section-header-wrapper">
-    <div class="section-header">
+    <h2 class="section-header">
       <span class="header-prefix">//</span>
       <span class="header-title">{{ title }}</span>
-    </div>
+    </h2>
     <p v-if="tagline" class="header-tagline">
       {{ tagline }}
     </p>
@@ -37,28 +37,30 @@ export default defineComponent({
 }
 
 .section-header {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xl);
-  font-weight: var(--font-medium);
-  color: var(--color-accent);
+  color: var(--color-white);
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.25;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  &::before { content: none; }
 }
 
 .header-prefix {
-  color: var(--color-accent-pink);
+  color: var(--color-accent);
   margin-right: var(--space-2);
 }
 
 .header-title {
-  color: var(--color-accent);
+  color: var(--color-white);
 }
 
 .header-tagline {
   margin-top: var(--space-3);
   font-size: var(--text-lg);
-  color: rgba(244, 244, 245, 0.7);
-  max-width: 40rem;
+  color: var(--color-text-secondary);
+  max-width: 60rem;
   line-height: var(--leading-relaxed);
 
   :deep(.gradient-text) {

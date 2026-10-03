@@ -21,13 +21,13 @@
       </nav>
 
       <!-- Mobile Nav Toggle -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Toggle navigation" aria-controls="mobile-navigation" />
       <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
         <span class="hamburger"></span>
       </label>
 
       <!-- Mobile Nav Drawer -->
-      <nav class="nav-mobile" aria-label="Mobile navigation">
+      <nav id="mobile-navigation" class="nav-mobile" aria-label="Mobile navigation">
         <a href="#games" class="nav-link">Games</a>
         <a href="#tools" class="nav-link">Tools</a>
         <a href="#experience" class="nav-link">Experience</a>
@@ -54,7 +54,7 @@ export default defineComponent({
   top: 0;
   z-index: var(--z-sticky);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(0, 0, 20, 0.7);
+  background: rgba(17, 27, 45, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -84,7 +84,7 @@ export default defineComponent({
   height: 32px;
   border-radius: 50%;
   overflow: hidden;
-  ring: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--color-border);
   transition: box-shadow var(--transition-base);
 
   &:hover {
@@ -140,11 +140,11 @@ export default defineComponent({
 
   &--cta {
     color: var(--color-white);
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-pink));
+    background: var(--color-button);
     margin-left: 0.5rem;
 
     &:hover {
-      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-pink));
+      background: var(--color-button);
       transform: translateY(-1px);
     }
   }
@@ -152,8 +152,10 @@ export default defineComponent({
 
 // === Mobile Nav ===
 .nav-toggle-input {
-  display: none;
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
+  @media (min-width: 768px) { display: none; }
 }
+.nav-toggle-input:focus-visible + .nav-toggle-label { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 
 .nav-toggle-label {
   display: flex;
@@ -224,7 +226,7 @@ export default defineComponent({
   right: 0;
   flex-direction: column;
   padding: var(--space-4) var(--space-6);
-  background: rgba(0, 0, 20, 0.95);
+  background: rgba(17, 27, 45, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);

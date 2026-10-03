@@ -97,8 +97,8 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  background: rgba(0, 229, 255, 0.08);
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  background: rgba(var(--color-accent-rgb), 0.08);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
   border-radius: var(--radius-full);
   padding: 0.35rem 0.85rem;
   font-size: var(--text-xs);

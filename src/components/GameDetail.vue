@@ -1,5 +1,33 @@
 <template>
   <article class="game-detail">
+    <!-- Header: title + status badge + quick store links -->
+    <div class="game-header">
+      <div class="game-title-group">
+        <h2 class="game-title font-display">{{ game.title }}</h2>
+        <span :class="['status-badge', `status-${game.status}`]">
+          {{ statusLabel }}
+        </span>
+      </div>
+      <div v-if="hasLinks" class="game-quick-actions">
+        <a
+          v-for="link in availableLinks"
+          :key="`${game.slug}-top-${link.label}`"
+          :href="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-quick-store"
+        >
+          <span v-if="link.icon" class="link-icon" v-html="link.icon" />
+          <span>{{ link.label }}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p class="game-description">
+      {{ descriptionText }}
+    </p>
+
     <!-- Header: video / embed / cover fallback -->
     <div class="cover-wrapper header-video-wrapper">
       <video
@@ -33,35 +61,7 @@
       />
     </div>
 
-    <!-- Header: title + status badge + quick store links -->
-    <div class="game-header">
-      <div class="game-title-group">
-        <h2 class="game-title font-display">{{ game.title }}</h2>
-        <span :class="['status-badge', `status-${game.status}`]">
-          {{ statusLabel }}
-        </span>
-      </div>
-      <div v-if="hasLinks" class="game-quick-actions">
-        <a
-          v-for="link in availableLinks"
-          :key="`${game.slug}-top-${link.label}`"
-          :href="link.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-quick-store"
-        >
-          <span v-if="link.icon" class="link-icon" v-html="link.icon" />
-          <span>{{ link.label }}</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Description -->
-    <p class="game-description">
-      {{ descriptionText }}
-    </p>
-
-    <!-- Key Contributions / What I Engineered -->
+    <!-- Key Contributions -->
     <section v-if="hasKeyContributions" class="detail-section contributions-section">
       <div class="contributions-card">
         <h3 class="contributions-header">
@@ -69,7 +69,7 @@
             <polyline points="16 18 22 12 16 6"></polyline>
             <polyline points="8 6 2 12 8 18"></polyline>
           </svg>
-          What I Engineered
+          My contributions
         </h3>
         <ul class="contributions-list">
           <li v-for="(item, index) in game.keyContributions" :key="`${game.slug}-contrib-${index}`" class="contrib-item">
@@ -335,16 +335,16 @@ export default defineComponent({
 @import '../css/design-system.less';
 
 .game-detail {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
 }
 
 .cover-wrapper {
   width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
   box-shadow: var(--shadow-lg);
   background: #000;
   display: flex;
@@ -413,8 +413,8 @@ export default defineComponent({
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-4);
-  background: rgba(0, 229, 255, 0.12);
-  border: 1px solid rgba(0, 229, 255, 0.35);
+  background: rgba(var(--color-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.35);
   border-radius: var(--radius-md);
   color: var(--color-accent);
   font-size: var(--text-sm);
@@ -423,11 +423,11 @@ export default defineComponent({
   transition: all var(--transition-fast);
 
   &:hover {
-    background: rgba(0, 229, 255, 0.25);
+    background: rgba(var(--color-accent-rgb), 0.25);
     border-color: var(--color-accent);
     color: var(--color-white);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(var(--color-accent-rgb), 0.2);
   }
 
   .link-icon {
@@ -458,9 +458,9 @@ export default defineComponent({
 }
 
 .status-shipped {
-  background: rgba(0, 229, 255, 0.15);
+  background: rgba(var(--color-accent-rgb), 0.15);
   color: var(--color-accent);
-  border-color: rgba(0, 229, 255, 0.3);
+  border-color: rgba(var(--color-accent-rgb), 0.3);
 }
 
 .status-in-development {
@@ -490,14 +490,14 @@ export default defineComponent({
   white-space: pre-line;
 }
 
-// === What I Engineered (Key Contributions) ===
+// === My contributions (Key Contributions) ===
 .contributions-section {
   margin-top: var(--space-2);
 }
 
 .contributions-card {
-  background: linear-gradient(145deg, rgba(0, 229, 255, 0.05) 0%, rgba(0, 0, 20, 0.6) 100%);
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: linear-gradient(145deg, rgba(var(--color-accent-rgb), 0.05) 0%, rgba(17, 27, 45, 0.6) 100%);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.25);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
@@ -574,19 +574,19 @@ export default defineComponent({
   overflow: hidden;
 
   &:hover {
-    border-color: rgba(0, 229, 255, 0.3);
+    border-color: rgba(var(--color-accent-rgb), 0.3);
   }
 
   &[open] {
-    border-color: rgba(0, 229, 255, 0.35);
-    background: rgba(0, 0, 20, 0.8);
+    border-color: rgba(var(--color-accent-rgb), 0.35);
+    background: rgba(17, 27, 45, 0.8);
 
     .deep-dive-summary {
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(0, 229, 255, 0.05);
+      background: rgba(var(--color-accent-rgb), 0.05);
 
       .summary-badge {
-        background: rgba(0, 229, 255, 0.2);
+        background: rgba(var(--color-accent-rgb), 0.2);
         color: var(--color-accent);
       }
     }
@@ -712,9 +712,9 @@ export default defineComponent({
   transition: all var(--transition-fast);
 
   &:hover {
-    border-color: rgba(0, 229, 255, 0.3);
+    border-color: rgba(var(--color-accent-rgb), 0.3);
     color: var(--color-white);
-    background: rgba(0, 229, 255, 0.05);
+    background: rgba(var(--color-accent-rgb), 0.05);
   }
 }
 
@@ -733,12 +733,12 @@ export default defineComponent({
   display: block;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(0, 229, 255, 0.4);
+    border-color: rgba(var(--color-accent-rgb), 0.4);
     box-shadow: var(--glow-accent);
 
     .trailer-play {
@@ -792,7 +792,7 @@ export default defineComponent({
   appearance: none;
   padding: 0;
   margin: 0;
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--color-surface);
@@ -801,7 +801,7 @@ export default defineComponent({
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(0, 229, 255, 0.4);
+    border-color: rgba(var(--color-accent-rgb), 0.4);
     box-shadow: var(--glow-accent);
   }
 
@@ -830,14 +830,14 @@ export default defineComponent({
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
   text-decoration: none;
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
   border-radius: var(--radius-md);
   transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-base), border-color var(--transition-base);
 
   &:hover {
     transform: translateY(-2px);
-    background: rgba(0, 229, 255, 0.1);
-    border-color: rgba(0, 229, 255, 0.5);
+    background: rgba(var(--color-accent-rgb), 0.1);
+    border-color: rgba(var(--color-accent-rgb), 0.5);
     box-shadow: var(--glow-accent);
   }
 
@@ -904,4 +904,23 @@ export default defineComponent({
 .fade-leave-to {
   opacity: 0;
 }
+
+.game-detail > * { min-width: 0; }
+.game-description { max-width: none; font-size: var(--text-base); color: var(--color-text-secondary); }
+.cover-wrapper { aspect-ratio: 16 / 9; align-self: start; }
+.header-video, .cover-image { width: 100%; height: 100%; max-height: none; object-fit: contain; }
+.contributions-section { margin-top: 0; }
+.contributions-card { height: 100%; border: 1px solid var(--color-border); background: var(--color-surface); }
+.contributions-card::before { display: none; }
+.contrib-item { font-size: var(--text-sm); color: var(--color-text-secondary); }
+:deep(.contrib-keyword) { display: block; color: var(--color-white); margin-bottom: var(--space-1); }
+.status-ongoing { color: var(--color-text-primary); background: #263B59; border-color: var(--color-border); }
+@media (min-width: 1024px) {
+  .game-detail { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); }
+  .game-detail > * { grid-column: ~"1 / -1"; }
+  .game-detail > .cover-wrapper { grid-column: 1; }
+  .game-detail > .contributions-section { grid-column: 2; }
+}
+@media (max-width: 600px) { .deep-dive-summary { gap: var(--space-3); flex-wrap: wrap; } }
+
 </style>

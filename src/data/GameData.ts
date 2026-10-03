@@ -30,7 +30,7 @@ export interface GameData {
     tags: string[];            // placeholder array
     platforms: string[];       // placeholder array
     techInfo?: string[];       // technical bullet points / tech stack
-    keyContributions?: string[]; // Catching, high-impact bullets
+    keyContributions?: string[]; // Concise descriptions of work contributed
     deepDive?: DeepDiveInfo;   // Expandable deep technical dive
 }
 
@@ -68,10 +68,10 @@ export const gamesData: GameData[] = [
             'DOTween UI Systems'
         ],
         keyContributions: [
-            '~80% Codebase Ownership: Architected and implemented core gameplay systems from initial vertical slice to store release.',
-            'Standalone 72 FPS on Quest 2: Engineered dynamic occlusion culling, mesh batching, and lightweight custom shaders to respect strict mobile GPU budgets.',
-            'Decoupled Architecture: Implemented Zenject (Dependency Injection) for modular subsystem decoupling and maintainability.',
-            'Zero Art, 100% Engineering: Focused entirely on code, gameplay math, performance profiling, and technical UI lifecycle.'
+            'Gameplay systems: Implemented core gameplay, enemy behaviors, and player interactions.',
+            'Quest 2 performance: Worked on occlusion culling, mesh batching, and custom shaders to maintain 72 FPS.',
+            'Project structure: Used Zenject to manage dependencies between gameplay systems.',
+            'UI and persistence: Built menu navigation, UI transitions, save systems, and telemetry.',
         ],
         deepDive: {
             summary: 'Comprehensive engineering breakdown from architecture to hardware-level mobile VR optimization.',
@@ -135,10 +135,10 @@ export const gamesData: GameData[] = [
             'Quest Store Release Profiling'
         ],
         keyContributions: [
-            'Real-Time AI Voice NPC Pipeline: Architected conversational VR NPCs integrating Meta Speech-to-Text, contextual LLM prompting, and real-time TTS playback.',
-            'REST API News Service: Built asynchronous web communication layer fetching dynamic space news and remote astronomical event feeds.',
-            'Mission Gameplay Engineering: Programmed interactive mission objectives and celestial exploration mechanics.',
-            'Store Release Level Optimization: Profiled and optimized scene bottlenecks to satisfy Meta Quest store submission guidelines.'
+            'NPC conversations: Connected speech recognition, LLM responses, and text-to-speech for voice interactions in VR.',
+            'Astronomy news: Integrated a REST API to load space news and astronomical events in-game.',
+            'Missions: Implemented mission objectives and interactions for celestial exploration.',
+            'Quest performance: Profiled scenes and optimized rendering for the Meta Quest release.',
         ],
         deepDive: {
             summary: 'Details on conversational AI integration, REST networking, and release-grade Quest performance.',
@@ -195,10 +195,10 @@ export const gamesData: GameData[] = [
             '2D Spatial Grid Engine'
         ],
         keyContributions: [
-            'Core Game Architecture & Original WebGL Build: Engineered the foundational mechanics, 2D grid matrix, and placement validation algorithms.',
-            'Decoupled SOLID Architecture: Applied SOLID principles and GoF patterns (Factory, Observer) to keep systems cleanly separated and extensible.',
-            'Furniture Placement & Combo Logic: Developed spatial placement collision, rotation math, and room-coherence combo scoring algorithms.',
-            'Solid Foundation for Mobile Port: Authored the clean, decoupled codebase that enabled the team to successfully port the game to Google Play.'
+            'Grid and placement: Built the 2D grid, furniture rotation, and checks for valid placement.',
+            'Game structure: Separated grid state, UI updates, and piece creation using Observer and Factory patterns.',
+            'Scoring: Implemented furniture combos and room-based score bonuses.',
+            'WebGL version: Developed the original game codebase, later used by the team for the Android port.',
         ],
         deepDive: {
             summary: 'Architectural breakdown of the 2D grid system, pattern decoupling, and placement mathematics.',
@@ -249,10 +249,10 @@ export const gamesData: GameData[] = [
             'Global Game Jam 2026'
         ],
         keyContributions: [
-            'Solo Gameplay & Systems Programming: Built all core VR gameplay, mechanics, and interactions in Unity 6000 / OpenXR during GGJ 2026.',
-            'Flashlight Observation AI Mechanic: Programmed mathematical vision-cone and spotlight checks that freeze creature AI when directly observed.',
-            'Interactive Electrical Door Puzzles: Developed interactable circuit boxes and room progression systems under strict jam deadlines.',
-            'Spatial Audio & Immersion: Synced dynamic sound triggers and lighting intensity with creature distance and player gaze.'
+            'Gameplay: Implemented VR mechanics and interactions in Unity during Global Game Jam 2026.',
+            'Creature behavior: Added gaze, flashlight, and line-of-sight checks so creatures stop when observed.',
+            'Door puzzles: Built circuit repair interactions and progression between museum rooms.',
+            'Audio and lighting: Connected sound and light changes to creature distance and player gaze.',
         ],
         deepDive: {
             summary: 'Gameplay math, observation detection algorithms, and VR interaction systems under 48h game jam conditions.',
@@ -306,10 +306,10 @@ export const gamesData: GameData[] = [
             'Cross-Platform Mechanics'
         ],
         keyContributions: [
-            'Fast Engine Ramp-Up & Delivery: Rapidly mastered Horizon Worlds\' proprietary engine architecture and authored complete gameplay logic in TypeScript.',
-            'Aggressive Constraint Optimization: Engineered lightweight scripts and event loops to operate within severe memory and execution budgets.',
-            'Cross-Platform Gameplay Systems: Built world interaction mechanics functional across standalone Meta Quest, desktop, and mobile web clients.',
-            'Multiplayer Game Flow: Coordinated state synchronization and user interaction rules on top of Horizon\'s native networking layer.'
+            'World interactions: Implemented gameplay and puzzle logic in TypeScript for Horizon Worlds.',
+            'Script performance: Reduced unnecessary updates and timers to stay within runtime limits.',
+            'Input handling: Adapted interactions for VR controllers and desktop/mobile inputs.',
+            'Multiplayer: Used Horizon networking to synchronize game state and player interactions.',
         ],
         deepDive: {
             summary: 'Engineering strategies for building reliable gameplay inside a heavily restricted proprietary VR engine.',

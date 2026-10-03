@@ -6,6 +6,7 @@
         v-for="game in gamesData"
         :key="game.slug"
         :class="['tab-button', { 'tab-button--active': game.slug === currentSlug }]"
+        :aria-pressed="game.slug === currentSlug"
         @click="selectGame(game.slug)"
       >
         {{ game.title }}
@@ -84,7 +85,7 @@ export default defineComponent({
   gap: var(--space-2);
   padding: var(--space-2);
   background: var(--color-surface);
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
   border-radius: var(--radius-lg);
   width: auto;
 }
@@ -104,7 +105,7 @@ export default defineComponent({
 
   &:hover {
     color: var(--color-white);
-    background: rgba(0, 229, 255, 0.08);
+    background: rgba(var(--color-accent-rgb), 0.08);
   }
 
   &:focus-visible {
@@ -114,9 +115,9 @@ export default defineComponent({
 }
 
 .tab-button--active {
-  color: var(--color-accent);
-  background: rgba(0, 229, 255, 0.12);
-  border-color: rgba(0, 229, 255, 0.3);
+  color: var(--color-white);
+  background: var(--color-button);
+  border-color: rgba(var(--color-accent-rgb), 0.3);
   font-weight: var(--font-semibold);
 }
 
