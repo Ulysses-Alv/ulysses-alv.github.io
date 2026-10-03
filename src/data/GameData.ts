@@ -1,6 +1,7 @@
 export interface DeepDiveSection {
     heading: string;
     details: string[];
+    emphasized?: boolean;
 }
 
 export interface DeepDiveInfo {
@@ -8,11 +9,19 @@ export interface DeepDiveInfo {
     sections: DeepDiveSection[];
 }
 
+export interface ProjectFact {
+    label: string;
+    value: string;
+}
+
 export interface GameData {
     slug: string;              // URL-safe identifier
     title: string;
     status: 'shipped' | 'ongoing' | 'in-development' | 'planned';
     platformLabel?: string;
+    roleSubtitle?: string;
+    projectFacts?: ProjectFact[];
+    productionOwnership?: string;
     shortDescription: string;
     longDescription: string;   // placeholder if empty
     coverImage: string;        // placeholder URL if none
@@ -40,7 +49,15 @@ export const gamesData: GameData[] = [
         title: 'Abduct & Destroy',
         status: 'ongoing',
         platformLabel: 'Meta Quest 2, 3, 3S, Pro',
-        shortDescription: 'Sandbox alien invasion for Meta Quest. Destroy cities, abduct humans, and spread chaos across the planet.',
+        roleSubtitle: 'Unity / VR Engineer — Gameplay, Architecture & Platform',
+        projectFacts: [
+            { label: 'Role', value: 'Unity / VR Engineer' },
+            { label: 'Lifecycle', value: 'Vertical Slice → 1.0' },
+            { label: 'Time', value: '~2 years' },
+            { label: 'Platform', value: 'Meta Quest' },
+        ],
+        productionOwnership: 'From the original vertical slice through nearly two years of production and into the upcoming 1.0 release, I remained continuously involved across gameplay, architecture, tooling, debugging, optimization and platform integration.',
+        shortDescription: 'Commercial VR title for Meta Quest. I have worked on the project from its original vertical slice through nearly two years of production and into its upcoming 1.0 release, contributing across most major technical areas: gameplay, architecture, AI, platform integration, tooling and optimization.',
         longDescription: '',
         coverImage: '/img/projects/Abduct-and-Destroy/499313072_1544091070441318_2103478863035313761_n.webp',
         headerType: 'local-mp4',
@@ -61,42 +78,71 @@ export const gamesData: GameData[] = [
         tags: ['VR', 'Meta Quest', 'Action', 'Sandbox'],
         platforms: ['Meta Quest'],
         techInfo: [
-            'Unity 6000 / URP / OpenXR',
-            'Zenject (DI framework)',
-            'Dynamic Occlusion Culling',
-            'Lightweight Custom Shaders',
-            'DOTween UI Systems'
+            'Unity',
+            'C#',
+            'Meta Quest',
+            'OpenXR',
+            'Zenject'
         ],
         keyContributions: [
-            'Gameplay systems: Implemented core gameplay, enemy behaviors, and player interactions.',
-            'Quest 2 performance: Worked on occlusion culling, mesh batching, and custom shaders to maintain 72 FPS.',
-            'Project structure: Used Zenject to manage dependencies between gameplay systems.',
-            'UI and persistence: Built menu navigation, UI transitions, save systems, and telemetry.',
+            'Core Gameplay & AI: Worked across ship movement, abduction, NPC behaviors, NavMesh navigation, boss encounters, procedural enemy animations and player interactions.',
+            'Architecture & Production: Reworked the vertical-slice codebase into modular Zenject systems, reducing singleton dependencies and enabling new missions, objectives and modes.',
+            'Meta Quest & Performance: Profiled Quest 2 CPU/GPU bottlenecks and optimized occlusion, batching and shaders to meet the 72 FPS target.',
+            'Platform, Tools & Persistence: Integrated OpenXR, Meta APIs and in-app purchases; built editor tools, level-testing workflows and save/load systems.',
         ],
         deepDive: {
-            summary: 'Comprehensive engineering breakdown from architecture to hardware-level mobile VR optimization.',
+            summary: 'Engineering decisions made while taking a commercial VR game from an early vertical slice through production iteration on Meta Quest.',
             sections: [
                 {
-                    heading: 'Architecture & Subsystem Decoupling',
+                    heading: 'Architecture & Gameplay Scalability',
+                    emphasized: true,
                     details: [
-                        'Structured project and scene contexts using Zenject Dependency Injection to eliminate singletons and tight coupling.',
-                        'Built modular event-driven service layers for save progression, settings persistence, telemetry, and in-game economy.',
-                        'Engineered clean UI navigation and modal lifecycle managed via DOTween without frame stutter.'
+                        'The original vertical-slice structure was too tightly coupled for the volume of gameplay planned for production.',
+                        'Progressively moved gameplay and scene composition to modular Zenject contexts, removing global singleton dependencies and making system boundaries clearer.',
+                        'That structure let new missions, objectives, encounters and alternate gameplay modes extend existing flows instead of forcing large rewrites.'
                     ]
                 },
                 {
-                    heading: 'Quest 2 Performance & Rendering Optimization',
+                    heading: 'Designed to survive changing game design',
+                    emphasized: true,
                     details: [
-                        'Designed a custom occlusion culling solution tailored for dense destructible city scenes on mobile XR chipsets.',
-                        'Profiled CPU/GPU timings using OVR Metrics Tool, Unity Profiler, and Frame Debugger to eliminate thermal throttling.',
-                        'Authored lightweight performance-first shaders to reduce fragment overdraw under Fixed Foveated Rendering.'
+                        'The game began with a narrower loop centered on capturing humans, then grew to include mini-objectives, alternate sequences, mini-bosses and different mission flows.',
+                        'With gameplay systems decoupled, these changes could be integrated by extending existing systems rather than rebuilding the core game flow.'
                     ]
                 },
                 {
-                    heading: 'Gameplay Systems & Enemy AI',
+                    heading: 'Gameplay Systems & AI',
                     details: [
-                        'Programmed procedural human abduction beam mechanics with custom physics constraints and ragdoll handoffs.',
-                        'Developed reactive enemy defense AI behaviors (turrets, interceptors, attack helicopters) with spatial awareness.'
+                        'Built and maintained ship movement, the human abduction loop, player interactions, NPC behaviors and NavMesh navigation.',
+                        'Worked on existing and new enemy behaviors, boss encounters, mini-bosses and procedural firing animations for police and enemies; contributions included debugging and integration as well as implementation.'
+                    ]
+                },
+                {
+                    heading: 'Meta Quest Performance',
+                    details: [
+                        'Dense, destructible scenes had to remain within standalone headset CPU/GPU and thermal budgets.',
+                        'Profiled with OVR Metrics Tool, Unity Profiler and Frame Debugger; worked on occlusion culling, mesh batching and lightweight Shader Graph/custom shaders to meet the 72 FPS target.'
+                    ]
+                },
+                {
+                    heading: 'XR Platform Integration',
+                    details: [
+                        'Integrated OpenXR and Meta platform APIs, including in-app purchases, and handled Quest-specific testing and debugging across the Android headset build workflow.'
+                    ]
+                },
+                {
+                    heading: 'Internal Tools & Production Workflow',
+                    details: [
+                        'Built Unity Editor utilities, level-testing tools, debugging helpers and production workflows so the team could test content and diagnose issues faster.',
+                        'Implemented save/load workflows including QuickSave integration and functional test coverage for critical flows.'
+                    ]
+                },
+                {
+                    heading: 'Production Iteration & Collaboration',
+                    details: [
+                        'Developed procedural environment-generation systems during earlier production; they were later removed as the game direction evolved.',
+                        'Worked with programmers, artists, modelers, animators, musicians and designers to debug integration issues around animation, rigs and asset setup, translating technical findings into actionable feedback.',
+                        'Later in production, used AI-assisted development within architectural constraints, review practices and functional testing to reduce regressions and keep changes compatible with the codebase.'
                     ]
                 }
             ]

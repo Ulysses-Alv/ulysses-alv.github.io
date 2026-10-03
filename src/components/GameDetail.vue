@@ -1,12 +1,15 @@
 <template>
-  <article class="game-detail">
+  <article :class="['game-detail', { 'has-role-subtitle': game.roleSubtitle }]">
     <!-- Header: title + status badge + quick store links -->
     <div class="game-header">
       <div class="game-title-group">
-        <h2 class="game-title font-display">{{ game.title }}</h2>
-        <span :class="['status-badge', `status-${game.status}`]">
-          {{ statusLabel }}
-        </span>
+        <div class="game-heading-row">
+          <h2 class="game-title font-display">{{ game.title }}</h2>
+          <span :class="['status-badge', `status-${game.status}`]">
+            {{ statusLabel }}
+          </span>
+        </div>
+        <p v-if="game.roleSubtitle" class="role-subtitle">{{ game.roleSubtitle }}</p>
       </div>
       <div v-if="hasLinks" class="game-quick-actions">
         <a
@@ -28,56 +31,71 @@
       {{ descriptionText }}
     </p>
 
-    <!-- Header: video / embed / cover fallback -->
-    <div class="cover-wrapper header-video-wrapper">
-      <video
-        v-if="game.headerType === 'local-mp4'"
-        :src="game.headerSrc"
-        controls
-        autoplay
-        loop
-        muted
-        playsinline
-        class="header-video"
-      />
-      <div
-        v-else-if="game.headerType === 'youtube' || game.headerType === 'vimeo'"
-        class="video-container"
-        style="aspect-ratio: 16/9;"
-      >
-        <iframe
-          :src="embedUrl"
-          frameborder="0"
-          allowfullscreen
-          class="header-iframe"
+    <!-- Project facts -->
+    <dl v-if="game.projectFacts?.length" class="project-facts" aria-label="Project facts">
+      <div v-for="fact in game.projectFacts" :key="fact.label" class="project-fact">
+        <dt>{{ fact.label }}</dt>
+        <dd>{{ fact.value }}</dd>
+      </div>
+    </dl>
+
+    <div class="media-contributions">
+      <!-- Header: video / embed / cover fallback -->
+      <div class="cover-wrapper header-video-wrapper">
+        <video
+          v-if="game.headerType === 'local-mp4'"
+          :src="game.headerSrc"
+          controls
+          autoplay
+          loop
+          muted
+          playsinline
+          class="header-video"
+        />
+        <div
+          v-else-if="game.headerType === 'youtube' || game.headerType === 'vimeo'"
+          class="video-container"
+          style="aspect-ratio: 16/9;"
+        >
+          <iframe
+            :src="embedUrl"
+            frameborder="0"
+            allowfullscreen
+            class="header-iframe"
+          />
+        </div>
+        <img
+          v-else
+          :src="coverImageSrc"
+          :alt="game.title"
+          class="cover-image"
+          @error="onCoverError"
         />
       </div>
-      <img
-        v-else
-        :src="coverImageSrc"
-        :alt="game.title"
-        class="cover-image"
-        @error="onCoverError"
-      />
+
+      <!-- Key Contributions -->
+      <section v-if="hasKeyContributions" class="detail-section contributions-section">
+        <div class="contributions-card">
+          <h3 class="contributions-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contributions-icon">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            My contributions
+          </h3>
+          <ul class="contributions-list">
+            <li v-for="(item, index) in game.keyContributions" :key="`${game.slug}-contrib-${index}`" class="contrib-item">
+              <span class="contrib-bullet" aria-hidden="true">▸</span>
+              <span class="contrib-text" v-html="formatContribution(item)"></span>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
 
-    <!-- Key Contributions -->
-    <section v-if="hasKeyContributions" class="detail-section contributions-section">
-      <div class="contributions-card">
-        <h3 class="contributions-header">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contributions-icon">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-          My contributions
-        </h3>
-        <ul class="contributions-list">
-          <li v-for="(item, index) in game.keyContributions" :key="`${game.slug}-contrib-${index}`" class="contrib-item">
-            <span class="contrib-bullet" aria-hidden="true">▸</span>
-            <span class="contrib-text" v-html="formatContribution(item)"></span>
-          </li>
-        </ul>
-      </div>
+    <section v-if="game.productionOwnership" class="production-ownership">
+      <h3>Production ownership</h3>
+      <p>{{ game.productionOwnership }}</p>
     </section>
 
     <!-- Technical Deep Dive (Expandable) -->
@@ -109,7 +127,7 @@
             <div
               v-for="(section, idx) in game.deepDive?.sections"
               :key="`${game.slug}-section-${idx}`"
-              class="deep-dive-card"
+              :class="['deep-dive-card', { 'deep-dive-card--emphasized': section.emphasized }]"
             >
               <h4 class="card-heading">{{ section.heading }}</h4>
               <ul class="card-list">
@@ -340,6 +358,9 @@ export default defineComponent({
   gap: var(--space-5);
 }
 
+.game-detail.has-role-subtitle { display: flex; flex-direction: column; }
+.media-contributions { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+
 .cover-wrapper {
   width: 100%;
   border-radius: var(--radius-lg);
@@ -396,9 +417,88 @@ export default defineComponent({
 
 .game-title-group {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.has-role-subtitle .game-header { display: block; }
+.has-role-subtitle .game-title-group { width: 100%; min-width: 0; }
+.has-role-subtitle .game-quick-actions { margin-top: var(--space-3); }
+
+.game-heading-row {
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
+}
+
+.role-subtitle {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-relaxed);
+}
+
+.project-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  width: 100%;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-sizing: border-box;
+}
+
+.project-fact {
+  flex: 1 1 9rem;
+  min-width: 0;
+  padding: var(--space-1) var(--space-2);
+
+  dt {
+    margin-bottom: var(--space-1);
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-snug);
+    overflow-wrap: anywhere;
+  }
+}
+
+.production-ownership {
+  grid-column: 1 / -1;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+
+  h3 {
+    margin: 0 0 var(--space-2);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+  }
+
+  p {
+    margin: 0;
+    max-width: 75ch;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
 }
 
 .game-quick-actions {
@@ -918,9 +1018,27 @@ export default defineComponent({
 @media (min-width: 1024px) {
   .game-detail { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); }
   .game-detail > * { grid-column: ~"1 / -1"; }
+  .game-detail > .game-header,
+  .game-detail > .game-description,
+  .game-detail > .project-facts { grid-column: 1 / span 2; }
   .game-detail > .cover-wrapper { grid-column: 1; }
   .game-detail > .contributions-section { grid-column: 2; }
+  .has-role-subtitle .media-contributions { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: start; }
+}
+
+.deep-dive-card--emphasized {
+  border-color: rgba(var(--color-accent-rgb), 0.2);
+  background: rgba(var(--color-accent-rgb), 0.035);
+
+  .card-heading {
+    color: var(--color-white);
+    font-weight: var(--font-bold);
+  }
 }
 @media (max-width: 600px) { .deep-dive-summary { gap: var(--space-3); flex-wrap: wrap; } }
+@media (max-width: 420px) {
+  .project-fact { flex-basis: calc(50% - var(--space-3)); }
+  .production-ownership { padding: var(--space-4); }
+}
 
 </style>
